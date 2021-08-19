@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" Sdk="Microsoft.Docker.Sdk" DefaultTargets="Build">
+  <PropertyGroup Label="Globals">
+    <ProjectVersion>2.1</ProjectVersion>
+    <DockerTargetOS>Linux</DockerTargetOS>
+    <ProjectGuid>e821b393-9029-4f77-90d8-91b8171abf7e</ProjectGuid>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/v1/version</DockerServiceUrl>
+    <DockerServiceName>mavim.apitopic.linux.img</DockerServiceName>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="docker-compose.linux-connectcache.yml" />
+    <None Include="docker-compose.linux-connectcache.override.yml">
+      <DependentUpon>docker-compose.linux-connectcache.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-connectwrite.yml" />
+    <None Include="docker-compose.linux-api-connectwrite.override.yml">
+      <DependentUpon>docker-compose.linux-api-connectwrite.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-connectread.yml" />
+    <None Include="docker-compose.linux-api-connectread.override.yml">
+      <DependentUpon>docker-compose.linux-api-connectread.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-changelog-relationship-public.yml" />
+    <None Include="docker-compose.linux-api-changelog-relationship-public.override.yml">
+      <DependentUpon>docker-compose.linux-api-changelog-relationship-public.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-changelog-title-public.yml" />
+    <None Include="docker-compose.linux-api-changelog-title-public.override.yml">
+      <DependentUpon>docker-compose.linux-api-changelog-title-public.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-catalog.override.yml">
+      <DependentUpon>docker-compose.linux-api-catalog.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-catalog.yml" />
+    <None Include="docker-compose.linux-api-authorization.override.yml">
+      <DependentUpon>docker-compose.linux-api-authorization.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-authorization.yml" />
+    <None Include="docker-compose.linux-api-changelog-title.override.yml">
+      <DependentUpon>docker-compose.linux-api-changelog-title.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-changelog-title.yml" />
+    <None Include="docker-compose.linux-api-changelog-field.override.yml">
+      <DependentUpon>docker-compose.linux-api-changelog-field.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-changelog-field.yml" />
+    <None Include="docker-compose.linux-api-wopihost.override.yml">
+      <DependentUpon>docker-compose.linux-api-wopihost.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-mavimdatabaseinfo.override.yml">
+      <DependentUpon>docker-compose.linux-api-mavimdatabaseinfo.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-topic.override.yml">
+      <DependentUpon>docker-compose.linux-api-topic.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-topic.yml" />
+    <None Include="docker-compose.linux-api-mavimdatabaseinfo.yml" />
+    <None Include="docker-compose.linux-api-wopihost.yml" />
+    <None Include=".dockerignore" />
+    <None Include="docker-compose.override.yml">
+      <DependentUpon>docker-compose.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.yml" />
+    <None Include="docker-compose.linux-api-admin-import-authorization.yml" />
+    <None Include="docker-compose.linux-api-admin-import-catalog.yml" />
+    <None Include="docker-compose.linux-api-changelog-relation.override.yml">
+      <DependentUpon>docker-compose.linux-api-changelog-relation.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-changelog-relation.yml" />
+    <None Include="docker-compose.linux-api-featureflag.yml" />
+    <None Include="docker-compose.linux-api-featureflag.override.yaml">
+      <DependentUpon>docker-compose.linux-api-featureflag.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.linux-api-authread.yml" />
+    <None Include="docker-compose.linux-api-authread.override.yml" />
+  </ItemGroup>
+</Project>

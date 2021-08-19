@@ -1,0 +1,41 @@
+{
+  "configKey": "Mavim:ConnectWriteSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-connectwrite-applicationid}#"
+    },
+    {
+      "key": "ApplicationIdInternal",
+      "value": "#{az-appConfig-connectwrite-applicationidinternal}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-connectwrite-tenantid}#"
+    },
+    {
+      "key": "ConnectionString",
+      "value": "#{az-appconfig-connectwrite-connectionstring}#"
+    },
+    {
+      "key": "ServiceBusConnectionKey",
+      "value": "#{az-appconfig-connectwrite-ServiceBusConnectionKey}#"
+    },
+    {
+      "key": "ServiceBusQueueName",
+      "value": "#{az-appconfig-connectwrite-ServiceBusQueueName}#"
+    },
+    {
+      "key": "ServiceBusBatchConnectionKey",
+      "value": "#{az-appconfig-connectwrite-ServiceBusBatchConnectionKey}#"
+    },
+    {
+      "key": "ServiceBusBatchQueueName",
+      "value": "#{az-appconfig-connectwrite-ServiceBusBatchQueueName}#"
+    },
+    {
+      "key": "KeyVaultName",
+      "value": "#{az-appconfig-connectwrite-KeyVaultName}#"
+    }
+  ]
+}

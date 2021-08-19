@@ -1,0 +1,21 @@
+<div
+	class="tree-panel"
+	[ngClass]="{ active: treePanelVisibility, sidebar_offset: treePanelVisibility && sidebarVisible | async }"
+>
+	<div class="tree-panel-scroll">
+		<mav-tree-container
+			id="mav-tree-container"
+			[treeFacade]="treeFacade"
+			[options]="treeOptions"
+			(topicSelected)="onTopicSelected($event)"
+		></mav-tree-container>
+		<mav-icon-button
+			class="tree-panel__close"
+			[label]="''"
+			[type]="'close'"
+			(click)="onClose()"
+		></mav-icon-button>
+	</div>
+
+	<mav-sidebar-button></mav-sidebar-button>
+</div>

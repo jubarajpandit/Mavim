@@ -1,0 +1,93 @@
+@import '../../../styles/colors';
+
+.table {
+	margin: 0;
+	font-family: 'Source Sans Pro', sans-serif;
+
+	& th,
+	td {
+		padding: 0;
+		border: none;
+
+		& span {
+			margin-left: 1rem;
+		}
+	}
+
+	& .name {
+		padding-left: 0.5rem;
+	}
+
+	.multiline {
+		white-space: pre-wrap;
+	}
+
+	& .striped-row:nth-child(even) {
+		background-color: #f5f5f5;
+	}
+
+	&.fieldset {
+		color: #fff;
+		font-size: 1.125rem;
+		background-color: #505155;
+		font-weight: 600;
+		line-height: 2.875rem;
+		box-shadow: 0 1px 2px 0 $gray-shadow;
+	}
+
+	&.field {
+		font-weight: 100;
+		color: #333;
+		background-color: #fff;
+		font-size: 1rem;
+		padding: 0.75rem;
+	}
+
+	& .row {
+		margin-right: 0;
+		margin-left: 0;
+	}
+
+	& .fieldname {
+		padding-left: 0.5rem;
+	}
+
+	& .fieldvalue {
+		line-height: 1.8rem;
+		border-left: 1px solid #ddd;
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+		padding-left: 0.5rem;
+	}
+
+	& .link {
+		color: $blue;
+		cursor: pointer;
+		white-space: pre-line;
+
+		&.no-margin {
+			margin-left: 0;
+		}
+
+		&:hover {
+			color: $dark-blue;
+		}
+	}
+
+	& .hyperlink {
+		display: flex;
+	}
+
+	& .external-link-icon {
+		background-color: #2178c6;
+		-webkit-mask: url('../../../../assets/icons/ui/streamline-icon-expand-6@140x140.svg')
+			no-repeat center/contain;
+		mask: url('../../../../assets/icons/ui/streamline-icon-expand-6@140x140.svg')
+			no-repeat center/contain;
+		display: flex;
+		margin-left: 0.5rem;
+		margin-top: 0.3125rem;
+		width: 1rem;
+		height: 1rem;
+	}
+}

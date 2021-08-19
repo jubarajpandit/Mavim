@@ -1,0 +1,157 @@
+@import '../../../styles/colors';
+@import '../../../styles/metrics';
+@import '../../../styles/text-mixins';
+
+@mixin notification-button($bg-c, $bg-c-hover, $f-c, $f-c-hover) {
+  font-family: $base-ff;
+  width: 8rem;
+  color: $f-c;
+  background-color: $bg-c;
+  margin: 0.5rem 1rem;
+  border-radius: 0.125rem;
+  border: 1px solid transparent;
+  text-shadow: none;
+
+  &:hover {
+    color: $f-c-hover;
+    background-color: $bg-c-hover;
+  }
+}
+
+.notification {
+  padding: 0px 0rem;
+  padding: 0px;
+  height: $default-bar-h;
+  transition: 0.5s height ease;
+
+  &.no-notifications {
+    height: 0;
+  }
+
+  &__bar {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    transition: top 0.25s ease;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+    height: $default-bar-h;
+
+    &.closed {
+      top: -10rem;
+    }
+  }
+
+  &__total {
+    position: absolute;
+    top: 1rem;
+    left: 1.625rem;
+    padding: 0.75rem;
+    border-radius: 1.5rem;
+    color: #fff;
+    border: 1px solid #fff;
+    height: 2rem;
+    width: 2rem;
+    line-height: 0.25rem;
+    background-color: transparent;
+  }
+
+  &--warning {
+    background-color: $warning;
+
+    ::ng-deep .btn {
+      &.close,
+      &.cancel {
+        border-color: $warning;
+      }
+    }
+  }
+
+  &--error {
+    background-color: $error;
+
+    ::ng-deep .btn {
+      &.close,
+      &.cancel {
+        border-color: $black-shadow;
+      }
+    }
+  }
+
+  &--info {
+    background-color: $info;
+
+    ::ng-deep .btn {
+      &.close,
+      &.cancel {
+        border-color: $accent1-hover;
+        background-color: $white !important;
+      }
+    }
+  }
+
+  &--edit {
+    background-color: $new;
+
+    ::ng-deep .btn {
+      &.close,
+      &.cancel {
+        border-color: $accent1;
+      }
+    }
+  }
+
+  &--success {
+    background-color: $green;
+
+    ::ng-deep .btn {
+      &.close,
+      &.cancel {
+        border-color: $black-shadow;
+      }
+    }
+  }
+
+  &__message {
+    display: block;
+    width: calc(100% - 3rem);
+    color: $white;
+    padding: 1.25rem;
+  }
+
+  &__actions {
+    display: inline-block;
+    position: absolute;
+    text-align: right;
+    right: 0.25rem;
+    top: 0.25rem;
+
+    ::ng-deep .btn {
+      &.edit {
+        @include notification-button($accent1, $accent1-hover, $white, $white);
+      }
+
+      &.close {
+        @include notification-button($button-transparent, $button-transparent-hover, $accent1-hover, $accent1-hover);
+      }
+
+      &.save {
+        @include notification-button($accent1, $accent1-hover, $white, $white);
+      }
+
+      &.cancel {
+        @include notification-button($button-transparent, $button-transparent-hover, $accent1-hover, $accent1-hover);
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    height: $default-bar-h;
+
+    &__actions {
+      display: inline-block;
+      position: absolute;
+      text-align: right;
+      right: 0.25rem;
+      top: 0;
+    }
+  }
+}

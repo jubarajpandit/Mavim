@@ -1,0 +1,63 @@
+{
+	"root": true,
+	"ignorePatterns": ["projects/**/*", "*.spec.ts"],
+	"overrides": [
+		{
+			"files": ["*.ts"],
+			"parser": "@typescript-eslint/parser",
+			"parserOptions": {
+				"ecmaVersion": 2019,
+				"sourceType": "module",
+				"project": ["tsconfig.json"],
+				"createDefaultProgram": true
+			},
+			"extends": [
+				"plugin:@angular-eslint/recommended",
+				"plugin:@angular-eslint/template/process-inline-templates",
+				"eslint:recommended",
+				"plugin:@typescript-eslint/recommended",
+				"plugin:@typescript-eslint/recommended-requiring-type-checking",
+				"plugin:prettier/recommended",
+				"plugin:ngrx/recommended"
+			],
+			"plugins": ["ngrx"],
+			"rules": {
+				"no-console": 2,
+				"ngrx/select-style": "error",
+				"@angular-eslint/component-selector": [
+					"error",
+					{
+						"type": "element",
+						"prefix": "mav",
+						"style": "kebab-case"
+					}
+				],
+				"@angular-eslint/directive-selector": [
+					"error",
+					{
+						"type": "attribute",
+						"prefix": "mav",
+						"style": "camelCase"
+					}
+				],
+				"@typescript-eslint/no-floating-promises": "off",
+				"@typescript-eslint/no-unsafe-member-access": "off"
+			}
+		},
+		{
+			"files": ["*.html"],
+			"extends": [
+				"plugin:@angular-eslint/template/recommended",
+				"plugin:prettier/recommended"
+			],
+			"rules": {
+				"prettier/prettier": [
+					"error",
+					{
+						"endOfLine": "auto"
+					}
+				]
+			}
+		}
+	]
+}

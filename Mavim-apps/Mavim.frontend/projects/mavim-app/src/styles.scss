@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
+/* You can add global styles to this file, and also import other style files */
+@import './shared/styles/colors';
+// import partials
+@import './shared/styles/fonts';
+@import './shared/styles/mav-icons';
+@import './shared/styles/mdl2-icons';
+@import './shared/styles/mvm-icons';
+@import './shared/styles/metrics';
+@import './shared/styles/text-mixins';
+@import './shared/styles/scrollbar';
+@import './shared/tooltip/poper/poper.component.scss';

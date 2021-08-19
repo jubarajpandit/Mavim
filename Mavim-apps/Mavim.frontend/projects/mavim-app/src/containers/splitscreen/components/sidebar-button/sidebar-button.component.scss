@@ -1,0 +1,34 @@
+@import '../../../../shared/styles/colors';
+
+$sidebar: 3.75rem;
+$full: 100%;
+$sidebarHeight: 56rem;
+
+.sidebar {
+  position: absolute;
+  right: -3.75rem;
+  top: 0;
+  width: $sidebar;
+  height: $full;
+  background-color: $gray-300;
+  color: $accent1;
+  border-right: 2px solid $accent1;
+
+  &:hover {
+    background-color: $button-hover;
+    cursor: pointer;
+  }
+
+  &-vertical-title {
+    position: absolute;
+    transform: rotate(90deg);
+    width: $sidebarHeight;
+    left: 1.875rem - ($sidebarHeight / 2);
+    top: $sidebarHeight / 2;
+    font-size: 1.875rem;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

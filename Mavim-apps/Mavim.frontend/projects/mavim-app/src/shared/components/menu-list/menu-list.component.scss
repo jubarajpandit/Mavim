@@ -1,0 +1,23 @@
+@import '../../styles/colors';
+@import '../../styles/metrics';
+
+.dropdown-menu {
+	width: 12.75rem;
+	display: inline-block;
+	left: auto !important;
+	right: 3rem !important;
+	top: 100% !important;
+
+	.dropdown-item {
+		color: blue;
+		cursor: pointer !important;
+		&:active {
+			background-color: $gray-500 !important;
+		}
+	}
+
+	.dropdown-header {
+		font-weight: bold;
+		color: black !important;
+	}
+}

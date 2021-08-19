@@ -1,0 +1,134 @@
+<div class="edit-panel">
+	<mav-modal *ngIf="showModal" (modalVisibility)="hideCreateRelationsModal()">
+		<mav-relations-create
+			[sourceDcv]="dcvId"
+			(relationCreated)="addRelation($event)"
+			(cancelComponent)="hideCreateRelationsModal()"
+		></mav-relations-create>
+	</mav-modal>
+	<div class="edit-panel__page">
+		<div *ngIf="showSaving" class="edit-panel__form">
+			<span class="edit-panel__form--info"
+				>Saving <strong>changes</strong>...</span
+			>
+		</div>
+		<div *ngIf="!showSaving" class="edit-panel__form">
+			<div *ngIf="!showConfirmClose">
+				<span class="edit-panel__form--info"
+					>You are currently <strong>editing</strong> this
+					document</span
+				>
+				<div class="edit-panel__form--actions">
+					<button class="btn btn-save" (click)="trySaveChanges()">
+						{{ saveButtonText }}
+					</button>
+					<button class="btn btn-cancel" (click)="cancelEdited()">
+						{{ cancelButtonText }}
+					</button>
+				</div>
+			</div>
+			<div *ngIf="showConfirmClose && !openChanges">
+				<span class="edit-panel__form--info"
+					>No <strong>changes</strong> to save, return to edit or
+					close?</span
+				>
+				<div class="edit-panel__form--actions">
+					<button class="btn btn-save" (click)="backToEdit()">
+						{{ editButtonText }}
+					</button>
+					<button class="btn btn-cancel" (click)="closeEdited()">
+						{{ closeButtonText }}
+					</button>
+				</div>
+			</div>
+			<div *ngIf="showConfirmClose && openChanges">
+				<span class="edit-panel__form--info"
+					>There are open <strong>Changes:</strong> return to edit? or
+					close anyway?</span
+				>
+				<div class="edit-panel__form--actions">
+					<button class="btn btn-save" (click)="backToEdit()">
+						{{ editButtonText }}
+					</button>
+					<button class="btn btn-cancel" (click)="closeEdited()">
+						{{ closeButtonText }}
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="edit-panel__content">
+			<div *ngIf="topicData" class="edit-panel__content--header">
+				<div class="edit-panel__cp-placeholder">
+					<mav-topic-edit-name
+						[titleText]="topicData.name"
+						(nameChanged)="handleTopicChanged($event, 'title')"
+						(topicNameEditError)="onValidationError($event, 'title')"
+					>
+					</mav-topic-edit-name>
+					<h3 *ngIf="topicData.name" class="edit-panels__panel-title">
+						{{ topicData.name }}
+					</h3>
+					<pre>
+{{ topicData.name?.length + ' characters to be updated' }}</pre
+					>
+				</div>
+			</div>
+
+			<!-- When editing, we should be able to add data when not defined yet -->
+			<!-- This should be refactored to allow for that functionality -->
+			<div class="edit-panel__content--fields">
+				<h2>Fields</h2>
+				<div
+					*ngIf="fieldData?.length; else fieldsEmpty"
+					class="edit-panel__cp-placeholder"
+				>
+					<mav-edit-fields
+						[fields]="fieldData"
+						(fieldsChanged)="handleFieldsChanged($event, 'fields')"
+						(validationError)="onValidationError($event, 'fields')"
+					>
+					</mav-edit-fields>
+				</div>
+				<ng-template #fieldsEmpty>
+					<p>Fields is empty...</p>
+				</ng-template>
+			</div>
+
+			<!-- When editing, we should be able to add data when not defined yet -->
+			<!-- This should be refactored to allow for that functionality -->
+
+			<div class="edit-panel__content--relations">
+				<h2>Relationship</h2>
+				<div *ngIf="this.relationFeatureFlag; else oldRelationTemplate">
+					<div class="edit-panel__cp-placeholder">
+						<mav-relations-edit
+							[relations]="relationData"
+							[relationFeatureFlag]="this.relationFeatureFlag"
+							(deleteRelationEvent)="handleDeleteRelationEvent($event)"
+							(resetRelationEvent)="handleResetRelationEvent($event)"
+							(addRelationEvent)="handleAddRelationEvent()"
+						>
+						</mav-relations-edit>
+					</div>
+				</div>
+				<ng-template #oldRelationTemplate>
+					<div
+						*ngIf="relationData?.length; else relationsEmpty"
+						class="edit-panel__cp-placeholder"
+					>
+						<mav-relations-edit
+							[relations]="relationData"
+							(deleteRelationEvent)="handleDeleteRelationEvent($event)"
+							(resetRelationEvent)="handleResetRelationEvent($event)"
+							(addRelationEvent)="handleAddRelationEvent()"
+						>
+						</mav-relations-edit>
+					</div>
+					<ng-template #relationsEmpty>
+						<p>Relations is empty...</p>
+					</ng-template>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+</div>

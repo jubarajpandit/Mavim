@@ -1,0 +1,14 @@
+<div class="dropdown {{ typeClass }}">
+	<div class="dropdown__menu">
+		<h6 *ngIf="header" class="dropdown__header">{{ header }}</h6>
+		<div #ref>
+			<ng-content></ng-content>
+		</div>
+		<div *ngIf="ref.childNodes.length === 0">
+			<h6 class="dropdown__header">optional header</h6>
+			<li>
+				<span>No items in dropdown</span>
+			</li>
+		</div>
+	</div>
+</div>

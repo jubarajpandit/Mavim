@@ -1,0 +1,21 @@
+{
+  "configKey": "Mavim:AuthSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-authorization-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-authorization-tenantid}#"
+    },
+    {
+      "key": "ConnectionString",
+      "value": "#{az-appconfig-authorizationdb-connectionstring}#"
+    },
+    {
+      "key": "ConnectApiEndPoint",
+      "value": "#{az-appconfig-authorizationdb-connectapiendpoint}#"
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+<div class="relations-edit">
+	<div *ngIf="this.relationFeatureFlag; else oldRelationTemplate">
+		<table id="relations_edit_table" class="table relations">
+			<thead class="row">
+				<th class="col name">Category</th>
+				<th class="col name">Characteristic</th>
+				<th class="col name">Topic</th>
+				<th class="col name border-right">From</th>
+				<th class="col-1 transparent position-relative">
+					<button
+						id="add-relation-button"
+						class="edit-button action"
+						(click)="addRelation()"
+					>
+						<i class="mdl2 mdl2-add"></i>
+					</button>
+				</th>
+			</thead>
+			<tbody *ngIf="relations?.length; else relationsEmpty">
+				<tr
+					*ngFor="let relation of relations"
+					class="striped-row"
+					[ngClass]="{ 'table-danger': isDeleted(relation), 'table-success': isCreatedRelation(relation) }"
+				>
+					<td colspan="4">
+						<table
+							id="relation_{{ relation.dcv }}"
+							class="table relation"
+						>
+							<tbody>
+								<tr class="row">
+									<td
+										id="relation_category_{{ relation.dcv }}"
+										class="col"
+									>
+										<span>
+											<mav-topicicon
+												*ngIf="relation.category"
+												[name]="relation.icon"
+											></mav-topicicon>
+											{{ relation.category }}
+										</span>
+									</td>
+									<td
+										id="relation_characteristic_{{ relation.dcv }}"
+										class="col"
+									>
+										<span>
+											<mav-topicicon
+												*ngIf="relation.characteristic?.name"
+												[name]="relation.characteristic.icon"
+											></mav-topicicon>
+											{{ relation.characteristic?.name }}
+										</span>
+									</td>
+									<td
+										id="relation_withelement_{{ relation.dcv }}"
+										class="col"
+									>
+										<span>
+											<mav-topicicon
+												*ngIf="relation.withElement?.name"
+												[name]="relation.withElement.icon"
+											></mav-topicicon>
+											{{ relation.withElement.name }}
+										</span>
+									</td>
+									<td
+										id="relation_withelementparent_{{ relation.dcv }}"
+										class="col border-right"
+									>
+										<span>
+											<mav-topicicon
+												*ngIf="relation.withElementParent?.name"
+												[name]="relation.withElementParent.icon"
+											></mav-topicicon>
+											{{ relation.withElementParent?.name
+											}}
+										</span>
+									</td>
+									<td
+										id="relation_actions_{{ relation.dcv }}"
+										class="col-1 transparent"
+									>
+										<div class="edit-buttons">
+											<button
+												id="delete_button_{{ relation.dcv }}"
+												class="edit-button"
+												*ngIf="!isDeleted(relation); else undoButton"
+												(click)="deleteRelation(relation)"
+											>
+												<i class="mdl2 mdl2-trash"></i>
+											</button>
+											<ng-template #undoButton>
+												<button
+													id="undo_button_{{ relation.dcv }}"
+													class="edit-button"
+													(click)="resetRelation(relation)"
+												>
+													<i
+														class="mdl2 mdl2-undo"
+													></i>
+												</button>
+											</ng-template>
+										</div>
+									</td>
+								</tr>
+								<tr
+									*ngIf="relationContainsInstructions(relation)"
+								>
+									<table class="table">
+										<tbody>
+											<tr
+												*ngIf="relation.userInstruction"
+												class="row"
+											>
+												<td
+													id="user_instruction_{{ relation.dcv }}"
+													class="col-11 border-right"
+												>
+													<span>
+														{{
+														relation.userInstruction.name
+														}}
+														<span>
+															<mav-topicicon
+																[name]="relation.userInstruction.icon"
+															></mav-topicicon>
+														</span>
+													</span>
+												</td>
+												<td
+													class="col-1 transparent"
+												></td>
+											</tr>
+											<tr
+												*ngFor="let dispatchInstruction of relation.dispatchInstructions"
+												class="row"
+											>
+												<td
+													id="relation_{{ relation.dcv }}_dispatch_{{ dispatchInstruction.dcv }}"
+													class="col-11 border-right"
+												>
+													<span>
+														{{
+														dispatchInstruction.typeName
+														}}
+														<span>
+															<mav-topicicon
+																[name]="dispatchInstruction.icon"
+															></mav-topicicon>
+															{{
+															dispatchInstruction.name
+															}}
+														</span>
+													</span>
+												</td>
+												<td
+													class="col-1 transparent"
+												></td>
+											</tr>
+										</tbody>
+									</table>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+			<ng-template #relationsEmpty>
+				<tbody>
+					<tr class="striped-row">
+						<td colspan="4">
+							<table class="table">
+								<tbody>
+									<tr class="row">
+										<td class="col-11 border-right">
+											<span class="no-record"
+												>This topic does not contain
+												relationships.</span
+											>
+										</td>
+										<td class="col-1 transparent"></td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</ng-template>
+		</table>
+	</div>
+	<ng-template #oldRelationTemplate>
+		<table
+			id="relations_edit_table"
+			class="table relations"
+			*ngIf="relations?.length"
+		>
+			<thead class="row">
+				<th class="col name">Category</th>
+				<th class="col name">Characteristic</th>
+				<th class="col name">Topic</th>
+				<th class="col name border-right">From</th>
+				<th class="col-1 transparent position-relative">
+					<button
+						id="add-relation-button"
+						class="edit-button action"
+						(click)="addRelation()"
+					>
+						<i class="mdl2 mdl2-add"></i>
+					</button>
+				</th>
+			</thead>
+			<tbody>
+				<tr
+					*ngFor="let relation of relations"
+					class="striped-row"
+					[ngClass]="{ 'table-danger': isDeleted(relation), 'table-success': isCreatedRelation(relation) }"
+				>
+					<td colspan="4">
+						<table
+							id="relation_{{ relation.dcv }}"
+							class="table relation"
+						>
+							<tbody>
+								<tr class="row">
+									<td
+										id="relation_category_{{ relation.dcv }}"
+										class="col"
+									>
+										<span>
+											<mav-topicicon
+												*ngIf="relation.category"
+												[name]="relation.icon"
+											></mav-topicicon>
+											{{ relation.category }}
+										</span>
+									</td>
+									<td
+										id="relation_characteristic_{{ relation.dcv }}"
+										class="col"
+									>
+										<span>
+											<mav-topicicon
+												*ngIf="relation.characteristic?.name"
+												[name]="relation.characteristic.icon"
+											></mav-topicicon>
+											{{ relation.characteristic?.name }}
+										</span>
+									</td>
+									<td
+										id="relation_withelement_{{ relation.dcv }}"
+										class="col"
+									>
+										<span>
+											<mav-topicicon
+												*ngIf="relation.withElement?.name"
+												[name]="relation.withElement.icon"
+											></mav-topicicon>
+											{{ relation.withElement.name }}
+										</span>
+									</td>
+									<td
+										id="relation_withelementparent_{{ relation.dcv }}"
+										class="col border-right"
+									>
+										<span>
+											<mav-topicicon
+												*ngIf="relation.withElementParent?.name"
+												[name]="relation.withElementParent.icon"
+											></mav-topicicon>
+											{{ relation.withElementParent?.name
+											}}
+										</span>
+									</td>
+									<td
+										id="relation_actions_{{ relation.dcv }}"
+										class="col-1 transparent"
+									>
+										<div class="edit-buttons">
+											<button
+												id="delete_button_{{ relation.dcv }}"
+												class="edit-button"
+												*ngIf="!isDeleted(relation); else undoButton"
+												(click)="deleteRelation(relation)"
+											>
+												<i class="mdl2 mdl2-trash"></i>
+											</button>
+											<ng-template #undoButton>
+												<button
+													id="undo_button_{{ relation.dcv }}"
+													class="edit-button"
+													(click)="resetRelation(relation)"
+												>
+													<i
+														class="mdl2 mdl2-undo"
+													></i>
+												</button>
+											</ng-template>
+										</div>
+									</td>
+								</tr>
+								<tr
+									*ngIf="relationContainsInstructions(relation)"
+								>
+									<table class="table">
+										<tbody>
+											<tr
+												*ngIf="relation.userInstruction"
+												class="row"
+											>
+												<td
+													id="user_instruction_{{ relation.dcv }}"
+													class="col-11 border-right"
+												>
+													<span>
+														{{
+														relation.userInstruction.name
+														}}
+														<span>
+															<mav-topicicon
+																[name]="relation.userInstruction.icon"
+															></mav-topicicon>
+														</span>
+													</span>
+												</td>
+												<td
+													class="col-1 transparent"
+												></td>
+											</tr>
+											<tr
+												*ngFor="let dispatchInstruction of relation.dispatchInstructions"
+												class="row"
+											>
+												<td
+													id="relation_{{ relation.dcv }}_dispatch_{{ dispatchInstruction.dcv }}"
+													class="col-11 border-right"
+												>
+													<span>
+														{{
+														dispatchInstruction.typeName
+														}}
+														<span>
+															<mav-topicicon
+																[name]="dispatchInstruction.icon"
+															></mav-topicicon>
+															{{
+															dispatchInstruction.name
+															}}
+														</span>
+													</span>
+												</td>
+												<td
+													class="col-1 transparent"
+												></td>
+											</tr>
+										</tbody>
+									</table>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</ng-template>
+</div>

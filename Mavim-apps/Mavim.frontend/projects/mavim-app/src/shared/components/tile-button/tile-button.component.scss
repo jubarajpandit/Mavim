@@ -1,0 +1,17 @@
+@import '../../../shared/styles/colors';
+@import '../../../shared/styles/metrics';
+@import '../../../shared/styles/load-wave';
+@import '../../../shared/styles/text-mixins';
+@import '../../../containers/topic/components/topic/topic.component.scss';
+@import '../../../containers/splitscreen/components/splitscreen/splitscreen.component.scss';
+
+.wopi-word-logo {
+	display: block;
+	text-indent: -9999px;
+	width: 25px;
+	height: 25px;
+	margin-left: 10px;
+	margin-top: 10px;
+	background: url('../../../assets/icons/wopi/word_16x1.svg');
+	background-size: 25px 25px;
+}

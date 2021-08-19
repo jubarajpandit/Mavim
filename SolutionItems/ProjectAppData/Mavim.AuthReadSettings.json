@@ -1,0 +1,21 @@
+{
+  "configKey": "Mavim:AuthReadSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-authread-applicationid}#"
+    },
+    {
+      "key": "ApplicationIdInternal",
+      "value": "#{az-appConfig-authread-applicationidinternal}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-authread-tenantid}#"
+    },
+    {
+      "key": "ConnectConnectionString",
+      "value": "#{az-appconfig-authread-connectionstring}#"
+    }
+  ]
+}

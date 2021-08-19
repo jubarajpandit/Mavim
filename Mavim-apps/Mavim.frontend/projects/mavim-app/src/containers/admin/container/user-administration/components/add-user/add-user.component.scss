@@ -1,0 +1,101 @@
+@import '../../../../../../shared/styles/colors';
+
+$validation-red-border: #d03333 !default;
+$validation-red-background: #f5eaea !default;
+$validation-green-border: #2ab535 !default;
+$validation-green-background: #e6f2e6 !default;
+
+.top-row {
+	margin-top: 2.5rem;
+}
+
+input {
+	outline-width: 0;
+}
+
+.tabbox {
+	border: 0.0625rem solid #cccdd2;
+	border-radius: 0.3125rem;
+
+	.tabbox-height {
+		height: 2.25rem;
+	}
+
+	.tabbox-flex {
+		min-width: 15rem;
+	}
+
+	.tabbox-element {
+		border: none;
+		width: inherit;
+		margin-top: 0.0625rem;
+	}
+}
+
+.valid-email {
+	border: 0.0625rem solid $validation-green-border;
+	border-radius: 0.375rem;
+	background-color: $validation-green-background;
+
+	&.ok-message-icon {
+		background-color: $validation-red-border;
+		-webkit-mask: url('../../../../../../assets/icons/ui/streamline-icon-check-circle-1@140x140.svg')
+			no-repeat center / contain;
+		mask: url('../../../../../../assets/icons/ui/streamline-icon-check-circle-1@140x140.svg')
+			no-repeat center / contain;
+	}
+}
+
+.user-email-image {
+	height: 0.9375rem;
+	width: 0.9375rem;
+	float: right;
+	margin: 0.325rem;
+	margin-right: 0;
+
+	&.valid-email-icon {
+		background-color: $validation-green-border;
+		-webkit-mask: url('../../../../../../assets/icons/ui/streamline-icon-check-circle-1@140x140.svg')
+			no-repeat center / contain;
+		mask: url('../../../../../../assets/icons/ui/streamline-icon-check-circle-1@140x140.svg')
+			no-repeat center / contain;
+	}
+
+	&.invalid-email-icon {
+		background-color: $validation-red-border;
+		-webkit-mask: url('../../../../../../assets/icons/ui/streamline-icon-remove-circle@140x140.svg')
+			no-repeat center / contain;
+		mask: url('../../../../../../assets/icons/ui/streamline-icon-remove-circle@140x140.svg')
+			no-repeat center / contain;
+	}
+}
+
+.invalid-email {
+	border: 0.0625rem solid $validation-red-border;
+	border-radius: 0.375rem;
+	background-color: $validation-red-background;
+
+	&.not-ok-message-icon {
+		background-color: $validation-red-border;
+		-webkit-mask: url('../../../../../../assets/icons/ui/streamline-icon-remove-circle@140x140.svg')
+			no-repeat center / contain;
+		mask: url('../../../../../../assets/icons/ui/streamline-icon-remove-circle@140x140.svg')
+			no-repeat center / contain;
+	}
+}
+
+.user-message-image {
+	height: 1.25rem;
+	width: 1.25rem;
+	float: left;
+	margin-right: 0.375rem;
+	margin-top: 0.125rem;
+
+	&.invalid-email-icon {
+		background-color: $validation-red-border;
+		-webkit-mask: url('../../../../../../assets/icons/ui/streamline-icon-remove-circle@140x140.svg')
+			no-repeat center / contain;
+		mask: url('../../../../../../assets/icons/ui/streamline-icon-remove-circle@140x140.svg')
+			no-repeat center / contain;
+	}
+}

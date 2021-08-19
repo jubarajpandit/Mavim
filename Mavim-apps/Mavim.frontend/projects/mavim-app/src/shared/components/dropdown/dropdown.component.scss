@@ -1,0 +1,71 @@
+@import '../../styles/colors';
+@import '../../styles/metrics';
+
+@mixin dd_item() {
+  list-style: none;
+
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+
+  a,
+  span {
+    display: block;
+    padding: 0 0.5rem;
+    line-height: 2.5rem;
+
+    &:hover {
+      background-color: $light-grey;
+      color: $info;
+    }
+  }
+
+  &.mdl2 {
+    display: inline-block;
+    width: calc(100% - 2rem);
+
+    &::before {
+      display: inline-block;
+      width: 2rem;
+    }
+  }
+}
+
+:host ::ng-deep .dropdown {
+  display: block;
+  background-color: $white;
+  border: 1px solid $gray-700;
+  max-width: 20rem;
+  padding: 0;
+
+  &__header {
+    color: $gray-600;
+    font-weight: bold;
+    padding: 0 0.5rem;
+    line-height: 2rem;
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  &__menu {
+    li {
+      @include dd_item();
+    }
+  }
+}
+
+:host.o365__dd {
+  border-top: 1px solid $black-shadow;
+
+  > .dropdown {
+    background-color: $primary;
+    border: none;
+    max-width: none;
+    height: 3.125rem;
+  }
+
+  @media screen and (min-width: $media-lg) {
+    border-top: none;
+  }
+}

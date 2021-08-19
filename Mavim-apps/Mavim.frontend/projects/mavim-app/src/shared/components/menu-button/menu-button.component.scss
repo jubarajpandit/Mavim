@@ -1,0 +1,22 @@
+@import '../../styles/colors';
+@import '../../styles/metrics';
+
+.btn {
+  border: none;
+  width: 3.75rem;
+  line-height: 3rem;
+  outline: 0;
+  background-color: $white;
+
+  .mdl2:before {
+    font-size: $default-icon;
+    line-height: 0;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    color: $info;
+    background-color: $light-grey;
+    cursor: pointer;
+  }
+}

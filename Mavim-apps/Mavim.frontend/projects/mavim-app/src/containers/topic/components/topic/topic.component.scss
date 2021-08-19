@@ -1,0 +1,228 @@
+@import '../../../../shared/styles/colors';
+@import '../../../../shared/styles/metrics';
+@import '../../../../shared/styles/load-wave';
+@import '../../../../shared/styles/text-mixins';
+
+@mixin detail-loader($height, $background, $wave) {
+	margin-top: 1rem;
+	display: block;
+	width: auto;
+	text-align: center;
+	background-color: $background;
+	background-repeat: none;
+	background-image: linear-gradient(
+		90deg,
+		transparent,
+		transparent,
+		transparent,
+		transparent,
+		$wave,
+		transparent
+	);
+}
+
+.dynamic-panel {
+	max-height: calc(100vh - 7rem);
+	overflow: auto;
+
+	&__whereami-btn {
+		position: absolute;
+		right: 6rem;
+		top: 2rem;
+		// needs to be in tertiary button
+		background-color: $light-grey;
+		color: $accent1;
+		border: 1px solid $accent1;
+		height: $default-btn-h;
+		width: $default-btn-h;
+		text-align: center;
+		line-height: $default-btn-h;
+		font-size: $default-icon;
+		z-index: 100;
+
+		&:hover {
+			background-color: $button-hover;
+			cursor: pointer;
+		}
+	}
+
+	&__edit-btn {
+		position: absolute;
+		right: 10.125rem;
+		top: 2rem;
+		// needs to be in tertiary button
+		background-color: $light-grey;
+		color: $accent1;
+		border: 1px solid $accent1;
+		height: $default-btn-h;
+		width: $default-btn-h;
+		text-align: center;
+		line-height: $default-btn-h;
+		font-size: $default-icon;
+		z-index: 100;
+
+		&:hover {
+			background-color: $button-hover;
+			cursor: pointer;
+		}
+	}
+
+	&__word-edit-btn {
+		position: absolute;
+		right: 14.125rem;
+		top: 2rem;
+		// needs to be in tertiary button
+		background-color: $light-grey;
+		color: $accent1;
+		border: 1px solid $accent1;
+		height: $default-btn-h;
+		width: $default-btn-h;
+		text-align: center;
+		line-height: $default-btn-h;
+		font-size: $default-icon;
+		z-index: 100;
+
+		&:hover {
+			background-color: $button-hover;
+			cursor: pointer;
+		}
+	}
+
+	&__wopi-test-btn {
+		position: absolute;
+		right: 2rem;
+		top: 6rem;
+		// needs to be in tertiary button
+		background-color: $light-grey;
+		color: $accent1;
+		border: 1px solid $accent1;
+		height: $default-btn-h;
+		width: $default-btn-h;
+		text-align: center;
+		line-height: $default-btn-h;
+		font-size: $default-icon;
+		z-index: 100;
+
+		&:hover {
+			background-color: $button-hover;
+			cursor: pointer;
+		}
+	}
+
+	&__content-loader {
+		padding: 1.875rem 1.875rem 3.375rem;
+
+		&.loader {
+			&--title {
+				@include detail-loader(
+					2.5rem,
+					$gray-300,
+					rgba(255, 255, 255, 0.75)
+				);
+				@include load-wave(5s);
+			}
+
+			&--legenda {
+				@include detail-loader(
+					1rem,
+					$gray-300,
+					rgba(255, 255, 255, 0.75)
+				);
+				@include load-wave(5s);
+			}
+
+			&--description {
+				@include detail-loader(
+					5rem,
+					$gray-300,
+					rgba(255, 255, 255, 0.75)
+				);
+				@include load-wave(5s);
+			}
+
+			&--fields {
+				@include detail-loader(
+					12.5rem,
+					$gray-300,
+					rgba(255, 255, 255, 0.75)
+				);
+				@include load-wave(5s);
+			}
+
+			&--files {
+				@include detail-loader(
+					3rem,
+					$gray-300,
+					rgba(255, 255, 255, 0.75)
+				);
+				@include load-wave(5s);
+			}
+
+			&--relations {
+				@include detail-loader(
+					6rem,
+					$gray-300,
+					rgba(255, 255, 255, 0.75)
+				);
+				@include load-wave(5s);
+			}
+
+			&--child-topics {
+				@include detail-loader(
+					4rem,
+					$gray-300,
+					rgba(255, 255, 255, 0.75)
+				);
+				@include load-wave(5s);
+			}
+		}
+	}
+
+	.wopi-word-logo {
+		display: block;
+		text-indent: -9999px;
+		width: 25px;
+		height: 25px;
+		margin-left: 10px;
+		margin-top: 10px;
+		background: url('../../../../assets/icons/wopi/word_16x1.svg');
+		background-size: 25px 25px;
+	}
+
+	.wopi-test-logo {
+		display: block;
+		text-indent: -9999px;
+		width: 25px;
+		height: 25px;
+		margin-left: 10px;
+		margin-top: 10px;
+		background: url('../../../../assets/icons/test/test-tube.svg');
+		background-size: 25px 25px;
+	}
+
+	&__panel-title {
+		.panel-title__header {
+			@include panel-header();
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+
+		.legenda--bold {
+			font-weight: bold;
+		}
+
+		img {
+			margin-bottom: -0.1875rem;
+			padding-right: 0.625rem;
+		}
+	}
+
+	&__content {
+		padding: 1.875rem 1.875rem 3.375rem;
+
+		& section {
+			padding: 0;
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21216.1</AssemblyVersion>
+    <FileVersion>1.0.21216.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Model\v1\Base\**" />
+    <EmbeddedResource Remove="Model\v1\Base\**" />
+    <None Remove="Model\v1\Base\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mavim.Manager.Authorization.DbContext\Mavim.Manager.Authorization.DbContext.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Authorization.Repository.Interfaces\Mavim.Manager.Api.Authorization.Repository.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.ExceptionHandler\Mavim.Libraries.Middlewares.ExceptionHandler.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="v1\" />
+    <Folder Include="v1\Model\" />
+  </ItemGroup>
+</Project>

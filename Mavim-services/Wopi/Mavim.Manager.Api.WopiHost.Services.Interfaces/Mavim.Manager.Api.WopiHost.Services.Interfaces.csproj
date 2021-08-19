@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21216.1</AssemblyVersion>
+    <FileVersion>1.0.21216.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.WopiValidator\Mavim.Libraries.Middlewares.WopiValidator.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.WopiHost.Repository.Interfaces\Mavim.Manager.Api.WopiHost.Repository.Interfaces.csproj" />
+  </ItemGroup>
+</Project>

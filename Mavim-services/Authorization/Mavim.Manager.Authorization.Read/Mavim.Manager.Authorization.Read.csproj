@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21216.1</AssemblyVersion>
+    <FileVersion>1.0.21216.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.ExceptionHandler\Mavim.Libraries.Middlewares.ExceptionHandler.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Authorization\Mavim.Libraries.Authorization.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Queries\" />
+    <Folder Include="Databases\" />
+    <Folder Include="Databases\Models\" />
+    <Folder Include="Databases\Enums\" />
+    <Folder Include="Databases\Intefaces\" />
+    <Folder Include="Models\" />
+    <Folder Include="Clients\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Clients\Models\" />
+    <Folder Include="Clients\ResponseModels\" />
+    <Folder Include="Clients\Interfaces\" />
+  </ItemGroup>
+</Project>

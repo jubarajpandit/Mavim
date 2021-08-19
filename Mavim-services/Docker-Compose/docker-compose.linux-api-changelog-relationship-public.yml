@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  mavim.clrelationext.linux.img:
+    image: ${DOCKER_REGISTRY-}mavimapiclrelationext.linux.img
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5018:8080
+    expose:
+      - 8080
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Changelog/Relationship/Ext/Mavim.Manager.Api.Ext.ChLog.Relationship/Dockerfile

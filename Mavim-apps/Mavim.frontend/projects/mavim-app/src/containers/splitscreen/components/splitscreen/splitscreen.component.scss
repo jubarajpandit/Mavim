@@ -1,0 +1,171 @@
+@import '../../../../shared/styles/colors';
+@import '../../../../shared/styles/metrics';
+
+$full: 100%;
+$fullMinLine: calc(100%);
+$fullMinSidebar: calc(100% - 2px - 3.75rem);
+$half: 50%;
+$halfMinSideBar: calc(50% - 3.75rem);
+$halfMinLine: calc(50% - 2px);
+$halfMinSidebar: calc(50% - 2px - (3.75rem / 2));
+$sidebar: 3.75rem;
+$halfIndent: calc(50% + (3.75rem / 2));
+
+.split-screens {
+	position: relative;
+	height: $full;
+	display: block;
+	overflow: hidden;
+
+	&__screen {
+		position: absolute;
+		width: $fullMinLine;
+		border-right: 2px solid $accent1;
+		left: $full;
+		top: 0;
+		height: $full;
+		transition: all 0.5s ease;
+		display: inline-block;
+
+		&-content {
+			position: relative;
+			padding: 0;
+		}
+
+		&-size-btn {
+			position: absolute;
+			right: 2rem;
+			top: 2rem;
+			// needs to be in tertiary button
+			background-color: $light-grey;
+			color: $accent1;
+			border: 1px solid $accent1;
+			height: $default-btn-h;
+			width: $default-btn-h;
+			text-align: center;
+			line-height: $default-btn-h;
+			font-size: $default-icon;
+			z-index: 100;
+
+			&:hover {
+				background-color: $button-hover;
+				cursor: pointer;
+			}
+		}
+
+		&.screen-1 {
+			left: 0;
+
+			&.sidebar_offset {
+				left: 3.75rem;
+				width: calc(50% - 3.75rem - 2px);
+
+				&__fullscreen {
+					left: 3.75rem;
+					width: calc(100% - 3.75rem);
+				}
+			}
+
+			&.leftscreen
+				.split-screens__screen-size-btn
+				.mdl2-full-screen:before {
+				content: '\e73f';
+			}
+		}
+
+		&.screen-2 {
+			left: $fullMinLine;
+
+			&.rightscreen {
+				left: 0;
+
+				.split-screens__screen-size-btn .mdl2-full-screen:before {
+					content: '\e73f';
+				}
+			}
+		}
+	}
+
+	@media screen and (min-width: $media-m) {
+		&__sidebar {
+			// keep space for sidebar
+			& ~ .split-screens__screen.screen-1 {
+				width: $halfMinSidebar;
+				left: $sidebar;
+
+				&.leftscreen {
+					width: $fullMinSidebar;
+					left: $sidebar;
+				}
+
+				&.rightscreen {
+					width: $fullMinSidebar;
+					left: -$full;
+				}
+			}
+
+			// keep space for sidebar
+			& ~ .split-screens__screen.screen-2 {
+				width: $halfMinSidebar;
+				left: $halfIndent;
+
+				&.leftscreen {
+					width: $fullMinSidebar;
+					left: $full;
+				}
+
+				&.rightscreen {
+					width: $fullMinSidebar;
+					left: $sidebar;
+				}
+			}
+		}
+
+		&__screen {
+			width: $half;
+			left: $full;
+
+			&:only-of-type {
+				left: 0;
+				width: $fullMinLine;
+			}
+
+			&.screen-1 {
+				left: 0;
+
+				&.leftscreen {
+					width: $fullMinLine;
+				}
+
+				&.rightscreen {
+					width: $fullMinLine;
+					left: -$full;
+				}
+			}
+
+			&.screen-2 {
+				left: $half;
+
+				&.leftscreen {
+					width: $fullMinLine;
+					left: $full;
+				}
+
+				&.rightscreen {
+					width: $fullMinLine;
+					left: 0;
+				}
+
+				&.sidebar_offset {
+					left: 3.75rem;
+					width: calc(50% - 3.75rem - 2px);
+
+					&__fullscreen {
+						left: 3.75rem;
+						width: calc(100% - 3.75rem);
+					}
+				}
+			}
+		}
+	}
+}

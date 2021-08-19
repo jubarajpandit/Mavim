@@ -1,0 +1,213 @@
+<div class="dynamic-panel">
+	<div class="dynamic-panel__content">
+		<div
+			*featureFlag="this.wopiTest"
+			(click)="wopiTestNav()"
+			class="dynamic-panel__wopi-test-btn"
+		>
+			<i class="wopi-test-logo"></i>
+		</div>
+		<div>
+			<mav-tile-button
+				*ngIf="this.isWordButtonVisible"
+				(click)="editWordNav()"
+				[toolTipFeatureFlag]="this.tooltipFeatureFlag"
+				[divClass]="'dynamic-panel__word-edit-btn'"
+				[iconClass]="'wopi-word-logo'"
+				[text]="getTooltipText(topicData?.resources)"
+			>
+			</mav-tile-button>
+		</div>
+		<div>
+			<mav-tile-button
+				*ngIf="canEdit"
+				(click)="editNav()"
+				[toolTipFeatureFlag]="this.tooltipFeatureFlag"
+				[divClass]="'dynamic-panel__edit-btn'"
+				[iconClass]="'mdl2 mdl2-pencil'"
+				[text]="'Edit topic'"
+			></mav-tile-button>
+		</div>
+		<div>
+			<mav-tile-button
+				*ngIf="!errorState"
+				(click)="expandToTree()"
+				[toolTipFeatureFlag]="this.tooltipFeatureFlag"
+				[divClass]="'dynamic-panel__whereami-btn'"
+				[iconClass]="'mdl2 mdl2-open-with'"
+				[text]="'Open location in tree'"
+			></mav-tile-button>
+		</div>
+		<ng-container *ngIf="errorState; else topicContainer">
+			<mav-resource-not-found></mav-resource-not-found>
+		</ng-container>
+		<ng-template #topicContainer>
+			<div class="dynamic-panel__content--header">
+				<div
+					*ngIf="topicData; else topicLoading"
+					class="dynamic-panel__panel-title"
+				>
+					<h1 class="panel-title__header">{{ topicData.name }}</h1>
+				</div>
+				<ng-template #topicLoading>
+					<div class="dynamic-panel__content-loader loader--title">
+						<div class="loader">Loading topic...</div>
+						<mav-dot-loader></mav-dot-loader>
+					</div>
+				</ng-template>
+			</div>
+
+			<div *ngIf="topicData && containsChart(topicData?.resources)">
+				<div class="dynamic-panel__content--wopi">
+					<h2 class="paragraph__header">Charts</h2>
+					<div *ngIf="chartsLoaded; else chartsLoading">
+						<mav-chart-viewer-with-buttons
+							[topicCharts]="chartData"
+							[visioActionUrl]="wopiActionUrls.visioViewerActionUrl"
+							(shapeClick)="navigate($event)"
+						>
+						</mav-chart-viewer-with-buttons>
+					</div>
+					<ng-template #chartsLoading>
+						<div
+							class="dynamic-panel__content-loader loader--fields"
+						>
+							<div class="loader">
+								Loading charts...<mav-dot-loader
+								></mav-dot-loader>
+							</div>
+						</div>
+					</ng-template>
+				</div>
+			</div>
+
+			<div *ngIf="topicData?.resources">
+				<div class="dynamic-panel__content--wopi">
+					<h2 class="paragraph__header">Description</h2>
+					<div
+						*ngIf="topicData && wopiActionUrls && containsDescription(topicData.resources); else noDescription"
+					>
+						<mav-word-viewer
+							[dcvId]="dcvId"
+							[wopiActionUrl]="wopiActionUrls.wordViewerActionUrl"
+						>
+						</mav-word-viewer>
+					</div>
+					<ng-template #noDescription>
+						<span>This topic does not contain a description.</span>
+					</ng-template>
+				</div>
+			</div>
+
+			<div
+				*ngIf="topicData?.resources"
+				class="dynamic-panel__content--fields"
+			>
+				<h2 class="paragraph__header">Fields</h2>
+				<div
+					*ngIf="topicData && containsFields(topicData.resources); else noFields"
+				>
+					<ng-template [ngIf]="fieldData?.length > 0">
+						<mav-fields
+							*ngIf="fieldsLoaded && !isEmpty(fieldData); else fieldsLoading"
+							[fields]="fieldData"
+							(internalDcvId)="navigate($event)"
+						></mav-fields>
+					</ng-template>
+					<div *ngIf="fieldData?.length === 0; then noFields"></div>
+					<div
+						*ngIf="fieldData === undefined; then fieldsLoading"
+					></div>
+				</div>
+				<ng-template #fieldsLoading>
+					<div class="dynamic-panel__content-loader loader--fields">
+						<div class="loader">
+							Loading fields...<mav-dot-loader> </mav-dot-loader>
+						</div>
+					</div>
+				</ng-template>
+				<ng-template #noFields>
+					<span>This topic does not contain fields.</span>
+				</ng-template>
+			</div>
+
+			<div
+				*ngIf="topicData?.resources"
+				class="dynamic-panel__content--relations"
+			>
+				<h2 class="paragraph__header">Relationships</h2>
+				<div
+					*ngIf="topicData && containsRelations(topicData.resources); else noRelationships"
+				>
+					<ng-template [ngIf]="relationData?.length > 0">
+						<mav-relations
+							[relations]="relationData"
+							(internalDcvId)="navigate($event)"
+						>
+						</mav-relations>
+					</ng-template>
+					<div
+						*ngIf="relationData?.length === 0; then noRelationships"
+					></div>
+					<div
+						*ngIf="relationData === undefined; then loadingRelationship"
+					></div>
+				</div>
+				<ng-template #loadingRelationship>
+					<div
+						class="dynamic-panel__content-loader loader--relations"
+					>
+						<div class="loader">
+							Loading relationships...<mav-dot-loader
+							> </mav-dot-loader>
+						</div>
+					</div>
+				</ng-template>
+				<ng-template #noRelationships>
+					<span>This topic does not contain relationships.</span>
+				</ng-template>
+			</div>
+
+			<div
+				*ngIf="topicData?.resources"
+				class="dynamic-panel__content--child-topics"
+			>
+				<h2 class="paragraph__header">Subtopics</h2>
+				<div
+					*ngIf="topicData && containsSubtopics(topicData.resources); else noSubtopics"
+				>
+					<ng-template [ngIf]="this.subtopicsData?.length > 0">
+						<mav-topic-children
+							*ngIf="!isEmpty(subtopicsData); else subTopicsLoading"
+							[childTopics]="subtopicsData"
+							(internalDcvId)="navigate($event)"
+						>
+						</mav-topic-children>
+					</ng-template>
+					<div
+						*ngIf="this.subtopicsData?.length === 0; then noSubtopics"
+					></div>
+					<div
+						*ngIf="this.subtopicsData === undefined; then subTopicsLoading"
+					></div>
+				</div>
+				<ng-template #subTopicsLoading>
+					<div
+						class="
+							dynamic-panel__content-loader
+							loader--child-topics
+						"
+					>
+						<div class="loader">
+							Loading subtopics...<mav-dot-loader
+							> </mav-dot-loader>
+						</div>
+					</div>
+				</ng-template>
+				<ng-template #noSubtopics>
+					<span>This topic does not contain subtopics.</span>
+				</ng-template>
+			</div>
+		</ng-template>
+	</div>
+</div>

@@ -1,0 +1,150 @@
+<mav-top-bar (toggle)="this.backToHome()"></mav-top-bar>
+<div class="container-fluid m-0">
+	<div class="row">
+		<div class="col col-dividing-line">
+			<div class="container-fluid m-0">
+				<div class="row top-row">
+					<div class="col">
+						<h1 class="header">User management</h1>
+						<div class="row">
+							<div class="col">
+								<ng-container
+									*ngIf="this.userFacade.responseMessage | async as message"
+								>
+									<div
+										[ngClass]="{ 'alert-success': message.type === 0, 'alert-danger': message.type === 1 }"
+										class="alert"
+										role="alert"
+									>
+										<div
+											*ngIf="message.type === 0"
+											class="
+												user-message-image
+												ok-message-icon
+											"
+										></div>
+										<div
+											*ngIf="message.type === 1"
+											class="
+												user-message-image
+												not-ok-message-icon
+											"
+										></div>
+										{{ message.text }}
+										<button
+											(click)="removeMessage()"
+											type="button"
+											class="btn close float-end"
+											data-dismiss="alert"
+											aria-label="Close"
+										>
+											<span aria-hidden="true"
+												>&times;</span
+											>
+										</button>
+									</div>
+								</ng-container>
+							</div>
+						</div>
+						<table
+							id="userManagementTable"
+							class="
+								table table-bordered table-striped table-header
+							"
+						>
+							<tr>
+								<th scope="col">
+									<p class="h3 table-header">Users</p>
+								</th>
+								<th scope="col" colspan="2">
+									<div class="float-end">
+										<mav-add-user-button
+											id="mgmtAddUserBtn"
+											(click)="toggleUserScreen()"
+											class="float-end"
+										>
+											Add user
+										</mav-add-user-button>
+									</div>
+								</th>
+							</tr>
+						</table>
+						<cdk-virtual-scroll-viewport [itemSize]="20">
+							<table class="table table-striped">
+								<tbody>
+									<ng-container
+										*ngIf="this.userFacade.usersLoaded | async; else loading"
+									>
+										<ng-container
+											*ngIf="this.userFacade.authorizedUsers | async as users"
+										>
+											<tr
+												(dblclick)="this.editUser(user)"
+												*cdkVirtualFor="let user of users"
+											>
+												<td scope="row">
+													{{ user.email }}
+												</td>
+												<td>{{ user.role }}</td>
+												<td>
+													<div
+														*ngIf="this.currentUserEmail && this.currentUserEmail !== user.email"
+														class="float-end"
+													>
+														<div
+															(click)="this.editUser(user)"
+															class="
+																user-actions-image
+																edit-icon
+															"
+														></div>
+														<mav-delete-user
+															(click)="this.closeScreen()"
+															[user]="user"
+														></mav-delete-user>
+													</div>
+												</td>
+											</tr>
+										</ng-container>
+									</ng-container>
+									<ng-template #loading>
+										<tr>
+											<td scope="row" colspan="3">
+												<div
+													class="
+														d-flex
+														justify-content-center
+													"
+												>
+													<div
+														class="
+															spinner-border
+															text-primary
+															m-5
+															spinner-size
+														"
+														role="status"
+													>
+														<span class="sr-only"
+															>Loading...</span
+														>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</ng-template>
+								</tbody>
+							</table>
+						</cdk-virtual-scroll-viewport>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="user-split-panel" [ngClass]="{ col: this.showScreen }">
+			<router-outlet
+				(activate)="onActivate()"
+				(deactivate)="componentRemoved()"
+			></router-outlet>
+		</div>
+	</div>
+</div>

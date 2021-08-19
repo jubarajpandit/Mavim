@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21187.1</AssemblyVersion>
+    <FileVersion>1.0.21187.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mavim.Manager.Api.ChangelogField.Repository.Interfaces\Mavim.Manager.Api.Int.ChLog.Field.Repository.Interfaces.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.ChangelogField.Repository\Mavim.Manager.Api.Int.ChLog.Field.Repository.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.ChangelogField.Services.Interfaces\Mavim.Manager.Api.Int.ChLog.Field.Services.Interfaces.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,48 @@
+<div class="input-group mb-3 select-dropdown dropdown">
+	<span class="input-group-text">
+		<mav-topicicon [name]="selectedIcon"></mav-topicicon>
+	</span>
+	<input
+		type="text"
+		[value]="selectedName"
+		[disabled]="disabled"
+		(input)="filter$.next($event.target.value)"
+		class="form-control"
+		placeholder="{{ this.placeholder }}"
+	/>
+	<div
+		class="input-group-append"
+		[ngClass]="this.disabled ? 'not-allowed' : 'pointer'"
+		(click)="toggleDropdown()"
+	>
+		<span class="input-group-text h-100"
+			><div class="arrow-down"></div
+		></span>
+	</div>
+	<div *ngIf="this.dropdownVisible" class="dropdown-menu input-group">
+		<cdk-virtual-scroll-viewport
+			*ngIf="notEmpty(this.filteredValues); else emptyDictionary"
+			itemSize="20"
+			class="dropdown-viewport"
+		>
+			<a class="dropdown-item pointer" (click)="clearValue()"
+				>{{ placeholder }}</a
+			>
+			<a
+				*cdkVirtualFor="let item of this.filteredValues | keyvalue"
+				class="dropdown-item pointer"
+				(click)="writeValue(item)"
+			>
+				<mav-topicicon
+					class="mr-2"
+					[name]="item.value.resourceId"
+				></mav-topicicon
+				>{{ item.value.name }}
+			</a>
+		</cdk-virtual-scroll-viewport>
+	</div>
+</div>
+
+<ng-template #emptyDictionary
+	><a class="dropdown-item">No items found.</a></ng-template
+>

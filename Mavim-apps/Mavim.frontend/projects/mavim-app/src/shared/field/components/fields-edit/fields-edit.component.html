@@ -1,0 +1,443 @@
+<mav-modal
+	id="mav-modal-fields-edit-relation"
+	*ngIf="showModal"
+	(modalVisibility)="hideFieldRelationsModal()"
+>
+	<mav-fields-edit-relation
+		[initLocation]="modalOpenLocation"
+		(closeComponent)="hideFieldRelationsModal()"
+		(relationFieldChanged)="saveRelationField($event)"
+	></mav-fields-edit-relation>
+</mav-modal>
+
+<div class="fields-edit">
+	<table
+		id="table-field-edit"
+		class="table fieldset"
+		*ngFor="let fieldSet of fieldSets"
+	>
+		<thead>
+			<th class="col name">{{ fieldSet }}</th>
+		</thead>
+		<tbody>
+			<tr class="row">
+				<td class="col-12">
+					<table class="table field table-borderless">
+						<tbody>
+							<tr
+								class="striped-row row"
+								*ngFor="let field of getFieldsOfFieldSet(fieldSet)"
+							>
+								<td class="col-4 fieldname">
+									<span class="indent"
+										>{{ field.fieldName }}</span
+									>
+								</td>
+								<td
+									class="border-start col-8"
+									[ngSwitch]="getFieldValueType(field.fieldValueType)"
+								>
+									<table
+										class="table h-100"
+										id="relation_text_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.text"
+									>
+										<ng-container
+											[ngTemplateOutlet]="textTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table"
+										id="relation_multitext_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.multiText"
+									>
+										<ng-container
+											[ngTemplateOutlet]="textTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table h-100"
+										id="relation_number_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.number"
+									>
+										<ng-container
+											[ngTemplateOutlet]="numberTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table"
+										id="relation_multinumber_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.multiNumber"
+									>
+										<ng-container
+											[ngTemplateOutlet]="numberTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table h-100"
+										id="relation_decimal_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.decimal"
+									>
+										<ng-container
+											[ngTemplateOutlet]="decimalTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table"
+										id="relation_multidecimal_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.multiDecimal"
+									>
+										<ng-container
+											[ngTemplateOutlet]="decimalTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table h-100"
+										id="relation_boolean_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.boolean"
+									>
+										<ng-container
+											[ngTemplateOutlet]="booleanTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table h-100"
+										id="relation_date_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.date"
+									>
+										<ng-container
+											[ngTemplateOutlet]="dateTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table"
+										id="relation_multidate_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.multiDate"
+									>
+										<ng-container
+											[ngTemplateOutlet]="dateTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table h-100"
+										id="relation_relationship_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.relationship"
+									>
+										<ng-container
+											[ngTemplateOutlet]="relationshipTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table"
+										id="relation_multirelationship_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.multiRelationship"
+									>
+										<ng-container
+											[ngTemplateOutlet]="relationshipTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table h-100"
+										id="relation_list_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.list"
+									>
+										<ng-container
+											[ngTemplateOutlet]="listTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table h-100"
+										id="relation_relationshiplist_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.relationshipList"
+									>
+										<ng-container
+											[ngTemplateOutlet]="relationshipListTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table h-100"
+										id="relation_hyperlink_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.hyperlink"
+									>
+										<ng-container
+											[ngTemplateOutlet]="hyperlinkTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table"
+										id="relation_multihyperlink_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchCase="fieldType.multiHyperlink"
+									>
+										<ng-container
+											[ngTemplateOutlet]="hyperlinkTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+									<table
+										class="table"
+										id="relation_default_{{ field?.fieldSetId }}_{{ field?.fieldId }}"
+										*ngSwitchDefault
+									>
+										<ng-container
+											[ngTemplateOutlet]="defaultTemplate"
+											[ngTemplateOutletContext]="{ field: field }"
+										></ng-container>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<ng-template #textTemplate let-field="field">
+	<tr
+		class="row fieldvalue h-100"
+		*ngFor="let value of getDataFromStringArray(field?.data); let i = index"
+	>
+		<td class="col-12">
+			<textarea
+				class="form-control border-0"
+				[name]="i"
+				type="text"
+				[value]="value"
+				[disabled]="field.readonly"
+				(blur)="onFieldChangedEvent(field, $event.target)"
+			>
+			</textarea>
+		</td>
+	</tr>
+</ng-template>
+
+<ng-template #hyperlinkTemplate let-field="field">
+	<tr
+		class="row fieldvalue h-100"
+		*ngFor="let value of getDataFromStringArray(field?.data); let i = index"
+	>
+		<td class="col-12 position-relative">
+			<input
+				class="form-control border-0 h-100"
+				[name]="i"
+				type="text"
+				[value]="value"
+				[disabled]="field.readonly"
+				(blur)="onHyperlinkChangedEvent(field, $event.target)"
+			/>
+			<div class="external-link-icon"></div>
+		</td>
+	</tr>
+</ng-template>
+
+<ng-template #numberTemplate let-field="field">
+	<tr
+		class="row fieldvalue h-100"
+		*ngFor="let value of getDataFromStringArray(field?.data); let i = index"
+	>
+		<td class="col-12">
+			<input
+				class="form-control border-0 h-100"
+				[name]="i"
+				type="number"
+				[value]="value"
+				[disabled]="field?.readonly"
+				(blur)="onFieldChangedEvent(field, $event.target)"
+			/>
+		</td>
+	</tr>
+</ng-template>
+
+<ng-template #decimalTemplate let-field="field">
+	<tr
+		class="row fieldvalue h-100"
+		*ngFor="let value of getDataFromStringArray(field?.data); let i = index"
+	>
+		<td class="col-12">
+			<input
+				class="form-control border-0 h-100"
+				[name]="i"
+				type="number"
+				step="any"
+				[value]="replaceCommaWithDot(value)"
+				[disabled]="field?.readonly"
+				(blur)="onDecimalChangeEvent(field, $event.target)"
+			/>
+		</td>
+	</tr>
+</ng-template>
+
+<ng-template #booleanTemplate let-field="field">
+	<tr
+		class="row fieldvalue h-100"
+		*ngFor="let value of getDataFromStringArray(field?.data); let i = index"
+	>
+		<td class="col-12 white">
+			<input
+				id="switch_{{ field?.fieldId }}_{{ i }}"
+				type="checkbox"
+				class="checkbox-hide h-100"
+				[disabled]="field?.readonly"
+				(change)="onToggleEvent(field, $event.target, i)"
+				[checked]="parseBooleanString(value)"
+			/><label
+				[attr.data-on]="booleanTrueValue"
+				[attr.data-off]="booleanFalseValue"
+				class="switch"
+				for="switch_{{ field?.fieldId }}_{{ i }}"
+			></label>
+		</td>
+	</tr>
+</ng-template>
+
+<ng-template #dateTemplate let-field="field">
+	<tr
+		class="row fieldvalue h-100"
+		*ngFor="let value of getDataFromStringArray(field?.data); let i = index"
+	>
+		<td class="col-12 position-relative">
+			<input
+				class="form-control border-0 h-100"
+				[name]="i"
+				type="date"
+				[value]="value | date: 'yyyy-MM-dd'"
+				max="9999-12-31"
+				[disabled]="field?.readonly"
+				(blur)="onDateChangeEvent(field, $event.target, i)"
+			/>
+			<div
+				*ngIf="!field?.readonly"
+				class="clear-icon"
+				(click)="clearFieldValue(field, i)"
+			></div>
+		</td>
+	</tr>
+</ng-template>
+
+<ng-template #relationshipTemplate let-field="field">
+	<tr
+		class="row fieldvalue h-100"
+		*ngFor="let value of getDataFromStringArray(field?.data); let i = index"
+	>
+		<td class="col-12 position-relative">
+			<div
+				*ngIf="!field?.readonly; else disabledRelation"
+				class="form-control border-0"
+			>
+				<span class="h-100">
+					<mav-topicicon
+						*ngIf="getNameFromFieldValue(value)"
+						[name]="getIconFromFieldValue(value)"
+					></mav-topicicon>
+					<span
+						class="relation"
+						(click)="onRelationChangedEvent(field, i)"
+						>{{ getNameFromFieldValue(value) }}</span
+					>
+				</span>
+			</div>
+			<ng-template #disabledRelation>
+				<div class="disabled h-100">
+					<span>
+						<mav-topicicon
+							*ngIf="getNameFromFieldValue(value)"
+							[name]="getIconFromFieldValue(value)"
+						></mav-topicicon>
+						<span>{{ getNameFromFieldValue(value) }}</span>
+					</span>
+				</div>
+			</ng-template>
+		</td>
+	</tr>
+</ng-template>
+
+<ng-template #listTemplate let-field="field">
+	<tr
+		class="row fieldvalue h-100"
+		*ngFor="let value of getDataFromField(field?.data); let i = index"
+	>
+		<td class="col-12 position-relative">
+			<select
+				class="form-control form-select border-0 half-padding h-100"
+				[disabled]="field?.readonly"
+				(change)="onListValueChanged(field, $event.target.value)"
+			>
+				<option *ngIf="getSelectedListKey(field.data[0]) === undefined">
+					{{ listBoxChoice }}
+				</option>
+				<option
+					*ngFor="let option of dictionaryToArray(field?.options)"
+					[selected]="getSelectedListKey(field.data[0]) === option.key"
+					[value]="option.key"
+				>
+					{{ option.text }}
+				</option>
+			</select>
+			<div
+				*ngIf="!field?.readonly"
+				class="clear-icon"
+				(click)="clearFieldValue(field, i)"
+			></div>
+		</td>
+	</tr>
+</ng-template>
+
+<ng-template #relationshipListTemplate let-field="field">
+	<tr
+		class="row fieldvalue h-100"
+		*ngFor="let value of getDataFromField(field?.data); let i = index"
+	>
+		<td class="col-12 position-relative">
+			<select
+				class="form-control form-select border-0 half-padding h-100"
+				[disabled]="field?.readonly"
+				(change)="onListValueChanged(field, $event.target.value)"
+			>
+				<option *ngIf="getSelectedListKey(field.data[0]) === undefined">
+					{{ listBoxChoice }}
+				</option>
+				<option
+					*ngFor="let option of dictionaryRelationshipToArray(field?.options)"
+					[selected]="getSelectedListKey(field.data[0]) === option.key"
+					[value]="option.key"
+				>
+					<mav-topicicon
+						*ngIf="option?.text"
+						[name]="option.icon"
+					></mav-topicicon>
+					{{ option.text }}
+				</option>
+			</select>
+			<div
+				*ngIf="!field?.readonly"
+				class="clear-icon"
+				(click)="clearFieldValue(field, i)"
+			></div>
+		</td>
+	</tr>
+</ng-template>
+
+<ng-template #defaultTemplate let-field="field">
+	<tr class="row fieldvalue h-100" *ngFor="let value of field?.data">
+		<td class="col-12">
+			<div class="form-control border-0 h-100">
+				<span>{{ value }}</span>
+			</div>
+		</td>
+	</tr>
+</ng-template>

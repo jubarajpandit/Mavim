@@ -1,0 +1,9 @@
+﻿#List of files that should be excluded while copying the files after the api stub is generated
+.sln
+.json
+.config
+.gitignore
+.config
+Dockerfile
+.html
+.md

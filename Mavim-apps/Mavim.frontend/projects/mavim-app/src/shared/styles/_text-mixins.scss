@@ -1,0 +1,81 @@
+@import '../styles/colors';
+@import '../styles/metrics';
+
+@mixin panel-header() {
+  font-weight: 400;
+  font-size: $header-fs;
+  line-height: $default-bar-h;
+  color: $gray-900;
+  letter-spacing: 0.23px;
+  font-family: $alt-ff;
+}
+
+.panel__header {
+  @include panel-header();
+}
+
+// content header
+@mixin paragraph-header() {
+  font-weight: 400;
+  font-size: $content-header-fs;
+  line-height: $content-header-lh;
+  color: $gray-700;
+  letter-spacing: 0;
+  font-family: $alt-ff;
+  padding: 1.875rem 0rem 0.625rem 0rem;
+}
+
+.paragraph__header {
+  @include paragraph-header();
+}
+
+@mixin default() {
+  font-weight: 400;
+  font-size: $default-fs;
+  color: $gray-900;
+  letter-spacing: -1.5px;
+  font-family: $base-ff;
+}
+
+.default-text {
+  @include default();
+}
+
+@mixin paragraph() {
+  font-weight: 400;
+  font-size: $content-fs;
+  color: $gray-900;
+  line-height: $content-lh;
+  letter-spacing: -1.5px;
+  font-family: $base-ff;
+}
+
+.paragraph-text {
+  @include paragraph();
+}
+
+@mixin legenda() {
+  font-weight: 400;
+  font-size: $legenda-fs;
+  color: $gray-800;
+  letter-spacing: 0;
+  font-family: $base-ff;
+}
+
+.legenda {
+  @include legenda();
+}
+
+body {
+  // default body font-size is 16px
+  font-family: $base-ff;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $alt-ff;
+}

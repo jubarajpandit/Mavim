@@ -1,0 +1,22 @@
+<div class="dropdown-menu">
+	<div *ngFor="let listItem of listItems">
+		<h6
+			*ngIf="listItem.isHeader; else clickableItem"
+			class="dropdown-header"
+		>
+			{{ listItem.name }}
+		</h6>
+		<ng-template #clickableItem>
+			<a
+				class="dropdown-item {{ listItem.class }}"
+				(click)="onClick(listItem.name)"
+			>
+				<div
+					*ngIf="listItem?.icon"
+					class="{{ listItem.icon }} dropdown-item-icon"
+				></div>
+				{{ listItem.name }}</a
+			>
+		</ng-template>
+	</div>
+</div>

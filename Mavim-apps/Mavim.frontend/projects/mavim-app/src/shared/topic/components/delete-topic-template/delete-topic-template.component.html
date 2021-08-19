@@ -1,0 +1,40 @@
+<!-- Modal content-->
+<div class="modal-content">
+	<div class="modal-header header">
+		<h4 class="modal-title">{{ this.modalTitle }}</h4>
+	</div>
+	<form>
+		<div class="modal-body">
+			<h6>
+				Are you sure you want to
+				<strong *ngIf="this.topic.isInRecycleBin">permanently</strong>
+				delete topic <strong>{{ this.topic.item }}</strong>?
+				<small
+					*ngIf="this.topic.isInRecycleBin; else recycleBin"
+					class="text-muted"
+					>This action is <strong>irreversible</strong>!</small
+				>
+				<ng-template #recycleBin>
+					<small class="text-muted"
+						>This action will move the topic to the
+						<strong>recycle bin</strong>!</small
+					>
+				</ng-template>
+			</h6>
+		</div>
+		<div class="modal-footer">
+			<mav-button
+				type="submit"
+				[text]="'Ok'"
+				[cssClass]="'save'"
+				(click)="this.accept()"
+			></mav-button>
+			<mav-button
+				[text]="'Cancel'"
+				type="button"
+				[cssClass]="'cancel'"
+				(click)="this.closeModal(false)"
+			></mav-button>
+		</div>
+	</form>
+</div>

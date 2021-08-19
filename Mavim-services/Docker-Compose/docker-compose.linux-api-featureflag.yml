@@ -1,0 +1,15 @@
+﻿version: "3.4"
+
+services:
+  mavim.featureflag.linux.img:
+    image: ${DOCKER_REGISTRY-}mavimapifeatureflag.linux.img
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5024:8080
+    expose:
+      - 8080
+    build:
+      context: ../../
+      dockerfile: Mavim-services/FeatureFlag/Mavim.Manager.Api.FeatureFlag/Dockerfile

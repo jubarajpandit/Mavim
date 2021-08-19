@@ -1,0 +1,153 @@
+@import '../../styles/colors';
+
+.o365 {
+  display: block;
+  position: relative;
+  background-color: $primary;
+  width: 100%;
+  height: 3.125rem;
+  padding: 0;
+  min-width: 20rem;
+
+  .logout-link {
+    cursor: pointer;
+  }
+
+  &__logo {
+    .logo__link[class*='_ngcontent-c'] {
+      display: none;
+      width: auto;
+
+      img {
+        max-height: 3.5rem;
+        width: auto;
+      }
+    }
+  }
+
+  .dropdown-item {
+    color: blue !important;
+    cursor: pointer !important;
+    &:active {
+      background-color: $gray-500 !important;
+    }
+  }
+
+  .dropdown-header {
+    font-weight: bold;
+    color: black !important;
+  }
+
+  .o365__dd {
+    z-index: 2000;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 3.125rem;
+    background-color: $primary;
+    width: 100%;
+    height: 3.125rem;
+    padding: 0;
+    min-width: 20rem;
+
+    &.active {
+      display: block;
+    }
+
+    .dropdown-menu {
+      position: relative;
+    }
+
+    & ::ng-deep mav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 3.125rem;
+      min-width: 10rem;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    &__name {
+      text-overflow: ellipsis;
+      word-break: break-all;
+      white-space: nowrap;
+      text-align: right;
+      vertical-align: middle;
+      display: inline-block;
+      overflow: hidden;
+      max-width: 126px;
+      width: 126px;
+      font-size: 0.875rem;
+      color: $white !important;
+      font-weight: 400;
+      font-family: 'Segoe UI', 'Segoe', Tahoma, Helvetica, Arial, sans-serif;
+    }
+
+    &__dots-btn {
+      position: absolute;
+      top: 0;
+      right: 12.625rem;
+    }
+
+    mav-o365-account-button + mav-dropdown {
+      position: absolute;
+      top: 3.125rem;
+      right: 0;
+      min-width: 12rem;
+      z-index: 10000;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    & ::ng-deep .o365__button.o365__button {
+      &--close {
+        display: none;
+      }
+
+      &--dots {
+        display: none;
+      }
+
+      &--menu {
+        display: none;
+      }
+
+      &--apps {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-right: 1px solid $light-grey;
+      }
+    }
+
+    & ::ng-deep mav-o365-logo {
+      position: absolute;
+      left: 0.25rem;
+      top: 0;
+      z-index: 2000;
+    }
+
+    .o365__dd {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 0;
+      width: calc(100% - 11rem);
+      background-color: transparent;
+      text-align: right;
+      z-index: 10000;
+
+      &.active {
+        display: inline-block;
+      }
+
+      & ::ng-deep mav-dropdown {
+        position: absolute;
+        top: 3.125rem;
+        left: calc(100% - 13.125rem);
+        min-width: 10rem;
+      }
+    }
+  }
+}

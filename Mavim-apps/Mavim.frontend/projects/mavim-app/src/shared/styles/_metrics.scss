@@ -1,0 +1,57 @@
+// document contains most used default variables.
+$base-ff: 'Source Sans Pro', sans-serif;
+$alt-ff: 'Lato', 'Source Sans Pro', sans-serif;
+
+// ************************* //
+//        Query widths       //
+// ************************* //
+$media-xl: 1200px;
+$media-lg: 1024px;
+$media-m: 768px;
+$media-s: 512px;
+
+// ************************ //
+//        Typography        //
+// ************************ //
+// body
+$default-fs: 1rem; // 16px
+// headers
+$header-fs: 2.875rem; // 46px
+$o365-fs: 1.5rem; // 24px
+$content-header-fs: 1.875rem; // 30px
+$content-header-lh: 2.25rem; // 36px
+// buttons
+$default-btn-fs: 1rem; // 16px
+$default-btn-ff: $base-ff;
+$default-btn-fw: 600;
+// tabs
+$default-tab-fs: 1.125rem; // 18px
+// input
+$input-fs: 1rem; // 16px
+// icons
+$default-icon: 1.5rem; // 24px
+// table
+$default-table-fs: 1rem; // 16px
+$table-header-fs: 1.125rem; // 18px
+$table-ff: $base-ff;
+$table-fw: 600;
+// paragraph
+$content-fs: 1.125rem; // 18px
+$content-lh: 1.75rem; // 28px
+// legenda
+$legenda-fs: 0.875rem; // 14px
+
+// ************************ //
+//           sizes          //
+// ************************ //
+// buttons
+$default-btn-h: 2.875rem; // 46px
+$edit-btn-h: 2.25rem; // 36px
+// bars
+$default-bar-h: 3.75rem; // 60px
+// input height
+$default-input-h: 2.875rem; // 46px
+// button-radius
+$default-radius: 0.125rem; // 2px
+// table cell height
+$default-cell-h: 2.875rem; // 46px

@@ -1,0 +1,15 @@
+@import '../../styles/colors';
+
+.logo {
+  position: relative;
+
+  &__by {
+    color: $gray-400;
+    margin-left: 1rem;
+  }
+
+  &__link {
+    display: block;
+    width: 80%;
+  }
+}

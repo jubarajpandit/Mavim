@@ -1,0 +1,12 @@
+version: "3.4"
+
+services:
+  mavim.wdioe2e.linux.img:
+    image: mavimwdioe2e.linux.img
+    ports:
+      - 4444:4444
+    expose:
+      - 4444
+    build:
+      context: ./
+      dockerfile: ./Dockerfile

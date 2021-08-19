@@ -1,0 +1,25 @@
+{
+  "configKey": "Mavim:ChangelogRelationSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-changelogrelation-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-changelogrelation-tenantid}#"
+    },
+    {
+      "key": "ConnectionString",
+      "value": "#{az-appconfig-changelogrelationdb-connectionstring}#"
+    },
+    {
+      "key": "AuthApiEndPoint",
+      "value": "#{az-appconfig-changelogrelation-authapi-endpoint}#"
+    },
+    {
+      "key": "ApiEndPoint",
+      "value": "#{az-appconfig-changelogrelationapi-endpoint}#"
+    }
+  ]
+}

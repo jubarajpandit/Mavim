@@ -1,0 +1,24 @@
+@import '../../styles/colors';
+
+.o365__button {
+  display: inline-block;
+  width: 3.125rem;
+  height: 3.125rem;
+  background-color: $primary;
+  color: $white;
+  vertical-align: top;
+
+  &:before {
+    width: 3.125rem;
+    display: block;
+    color: inherit;
+    text-align: center;
+    line-height: 3.125rem;
+    font-size: 1.5rem;
+  }
+
+  &:hover {
+    background-color: $primary-dark;
+    cursor: pointer;
+  }
+}

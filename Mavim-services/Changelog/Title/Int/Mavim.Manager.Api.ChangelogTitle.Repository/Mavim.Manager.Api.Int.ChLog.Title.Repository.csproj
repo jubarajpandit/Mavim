@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21187.1</AssemblyVersion>
+    <FileVersion>1.0.21187.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Shared\Mavim.Libraries.Authorization\Mavim.Libraries.Authorization.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.ChangelogTitle.Repository.Interfaces\Mavim.Manager.Api.Int.ChLog.Title.Repository.Interfaces.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.ChangelogTitle.DbContext\Mavim.Manager.Int.ChLog.Title.DbContext.csproj" />
+    <ProjectReference Include="..\..\..\..\Shared\Mavim.Libraries.Middlewares.Language\Mavim.Libraries.Middlewares.Language.csproj" />
+  </ItemGroup>
+</Project>

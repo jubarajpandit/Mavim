@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  mavim.apiauthorization.linux.img:
+    image: ${DOCKER_REGISTRY-}mavimapiauthorization.linux.img
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5000:8080
+    expose:
+      - 8080
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Authorization/Mavim.Manager.Api.Authorization/Dockerfile

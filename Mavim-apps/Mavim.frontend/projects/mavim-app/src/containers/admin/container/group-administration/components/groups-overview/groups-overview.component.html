@@ -1,0 +1,23 @@
+<div *ngIf="this.groups; else loadingTemplate">
+	<div class="d-flex flex-row flex-wrap ps-2">
+		<div
+			*ngFor=" let group of this.groups"
+			[ngClass]="'col-' + columnDevision"
+		>
+			<mav-create-group
+				[title]="group.title"
+				[description]="group.description"
+				[roles]="group.roles"
+			>
+			</mav-create-group>
+		</div>
+	</div>
+</div>
+<ng-template #loadingTemplate>
+	<div class="dynamic-panel__content-loader loader--title">
+		<div class="spinner-border text-success m-5 spinner-size" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+		<mav-dot-loader></mav-dot-loader>
+	</div>
+</ng-template>

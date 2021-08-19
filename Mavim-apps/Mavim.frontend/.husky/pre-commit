@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+cd ./Mavim-apps/Mavim.frontend/
+npm run format:fix
+npm run lint

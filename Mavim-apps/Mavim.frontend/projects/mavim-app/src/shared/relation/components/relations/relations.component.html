@@ -1,0 +1,116 @@
+<table id="relations-table" class="table relations" *ngIf="relations?.length">
+	<thead class="row">
+		<th class="col name">Category</th>
+		<th class="col name">Characteristic</th>
+		<th class="col name">Topic</th>
+		<th class="col name">From</th>
+	</thead>
+	<tbody>
+		<tr *ngFor="let relation of relations" class="striped-row">
+			<td colspan="4">
+				<table
+					[id]="'relaton-table-' + relation.dcv"
+					class="table relation"
+				>
+					<tbody>
+						<tr class="row">
+							<td class="col">
+								<span>
+									<mav-topicicon
+										*ngIf="relation.category"
+										[name]="relation.icon"
+									></mav-topicicon>
+									{{ relation.category }}
+								</span>
+							</td>
+							<td class="col">
+								<span>
+									<mav-topicicon
+										*ngIf="relation.characteristic?.name"
+										[name]="relation.characteristic.icon"
+									></mav-topicicon>
+									{{ relation.characteristic?.name }}
+								</span>
+							</td>
+							<td class="col">
+								<span
+									[ngClass]="{ 'internal-link': relation.isTypeOfTopic }"
+									(click)="relation.isTypeOfTopic ? emitInternalLinkClickEvent(relation.withElement?.dcv) : null"
+								>
+									<mav-topicicon
+										*ngIf="relation.withElement?.name"
+										[name]="relation.withElement.icon"
+									></mav-topicicon>
+									{{ relation.withElement.name }}
+								</span>
+							</td>
+							<td class="col">
+								<span
+									[ngClass]="{ 'internal-link': relation.isTypeOfTopic }"
+									(click)="relation.isTypeOfTopic ? emitInternalLinkClickEvent(relation.withElementParent?.dcv) : null"
+								>
+									<mav-topicicon
+										*ngIf="relation.withElementParent?.name"
+										[name]="relation.withElementParent.icon"
+									></mav-topicicon>
+									{{ relation.withElementParent?.name }}
+								</span>
+							</td>
+						</tr>
+						<tr *ngIf="relationContainsInstructions(relation)">
+							<table
+								id="relation-table-Instructions"
+								class="table"
+							>
+								<tbody>
+									<tr
+										[id]="'relation-table-userInstruction-' + relation.userInstruction.dcv"
+										*ngIf="relation.userInstruction"
+									>
+										<td>
+											<span>
+												{{ relation.userInstruction.name
+												}}
+												<span
+													[ngClass]="{ 'internal-link': relation.isTypeOfTopic }"
+													(click)="
+                            relation.isTypeOfTopic ? emitInternalLinkClickEvent(relation.userInstruction.dcv) : null
+                          "
+												>
+													<mav-topicicon
+														[name]="relation.userInstruction.icon"
+													></mav-topicicon>
+												</span>
+											</span>
+										</td>
+									</tr>
+									<tr
+										[id]="'relation-table-userInstruction-' + dispatchInstruction.dcv"
+										*ngFor="let dispatchInstruction of relation.dispatchInstructions"
+									>
+										<td>
+											<span>
+												{{ dispatchInstruction.typeName
+												}}
+												<span
+													[ngClass]="{ 'internal-link': relation.isTypeOfTopic }"
+													(click)="relation.isTypeOfTopic ? emitInternalLinkClickEvent(dispatchInstruction.dcv) : null"
+												>
+													<mav-topicicon
+														[name]="dispatchInstruction.icon"
+													></mav-topicicon>
+													{{ dispatchInstruction.name
+													}}
+												</span>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>

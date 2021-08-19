@@ -1,0 +1,41 @@
+@import '../../styles/colors';
+
+.icon-btn ::ng-deep .btn {
+	&-info {
+		background-color: $gray-200;
+		color: $accent1;
+		border: 1px solid $accent1;
+
+		&:hover {
+			background-color: $gray-400;
+		}
+	}
+
+	&-new {
+		background-color: $new;
+		color: $gray-100;
+
+		&:hover {
+			color: $white;
+			background-color: $new-hover;
+		}
+	}
+
+	&-action {
+		background-color: transparent;
+		color: $action;
+
+		&:hover {
+			color: $action;
+			background-color: $gray-200;
+		}
+	}
+
+	&-collapse {
+		background-color: $white;
+
+		&:hover {
+			background-color: $gray-200;
+		}
+	}
+}

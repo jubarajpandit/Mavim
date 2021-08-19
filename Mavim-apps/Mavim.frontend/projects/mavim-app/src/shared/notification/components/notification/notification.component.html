@@ -1,0 +1,18 @@
+<div class="notification" [ngClass]="{ 'no-notifications': allClosed }">
+	<div
+		*ngIf="lastNotification"
+		class="notification__bar notification--{{ getClassByType(lastNotification.type) }}"
+	>
+		<div class="notification__total">{{ numberOfOpenNotifications() }}</div>
+		<div class="notification__message">{{ lastNotification.message }}</div>
+		<div class="notification__actions">
+			<mav-button
+				[text]="action"
+				*ngFor="let action of lastNotification.actions"
+				[cssClass]="action"
+				(click)="onClick(lastNotification)"
+			>
+			</mav-button>
+		</div>
+	</div>
+</div>

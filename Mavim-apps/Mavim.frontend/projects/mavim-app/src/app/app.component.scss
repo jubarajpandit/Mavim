@@ -1,0 +1,108 @@
+@import '../shared/styles/colors';
+@import '../shared/styles/metrics';
+
+$halfMinPrev: calc((100% / 2) - 2px - (3.75rem / 2));
+$half: calc((100% / 2) - 2px);
+
+.main-view {
+  height: 100vh; // 100vh
+  position: relative;
+  display: block;
+  overflow: hidden;
+
+  &__notifications {
+    z-index: 500;
+    position: absolute;
+    width: 100%;
+    top: 3.125rem;
+    overflow: hidden;
+  }
+
+  &__close {
+    position: absolute;
+    top: 1.325rem;
+    right: 1rem;
+  }
+
+  &__nav-panel {
+    position: absolute;
+    width: calc(100% - 2px);
+    border-right: 2px solid $accent1;
+    left: -110%;
+    top: 6.9375rem;
+    height: calc(100% - 6.875rem);
+    transition: left 0.5s ease;
+    display: inline-block;
+    background-color: $white;
+    z-index: 440;
+
+    &-scroll {
+      margin: 1rem 1rem 0;
+      position: relative;
+      display: block;
+      height: calc(100% - 2rem);
+      width: calc(100% - 2rem);
+      overflow: auto;
+    }
+
+    &.active {
+      left: 0;
+
+      & ::ng-deep .topic-tree__close {
+        position: fixed;
+        top: 9.25rem;
+        left: calc(50% - 7.75rem);
+      }
+
+      & + .main-view__view-panel {
+        left: 100%;
+      }
+    }
+  }
+
+  &__view-panel {
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    left: 0;
+    top: 3.125rem;
+    height: calc(100% - 3.125rem);
+    transition: left 0.5s ease;
+
+    &-scroll {
+      margin: 0 0 1rem 0;
+      position: relative;
+      display: block;
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+    }
+  }
+
+  @media screen and (min-width: $media-m) {
+    &__nav-panel {
+      width: $half;
+      left: -55%;
+
+      &.active {
+        left: 0;
+
+        & + .main-view__view-panel {
+          left: 50%;
+        }
+
+        &.splitPanel {
+          width: $halfMinPrev;
+        }
+
+        &.splitPanel + .main-view__view-panel {
+          left: 0;
+
+          & ::ng-deep .dynamic-panels__prev {
+            left: $halfMinPrev;
+          }
+        }
+      }
+    }
+  }
+}

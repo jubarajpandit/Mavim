@@ -1,0 +1,42 @@
+@import '../../styles/colors';
+@import '../../styles/metrics';
+
+.o365__logo {
+  background-color: $primary;
+  height: 3.125rem;
+  display: inline-block;
+  vertical-align: top;
+
+  & ::ng-deep .logo {
+    display: inline-block;
+
+    &__link {
+      padding: 0.75rem;
+      display: none;
+
+      img {
+        display: block;
+        height: 1.625rem;
+        width: auto;
+        margin: 0;
+      }
+    }
+  }
+
+  .o365__title {
+    display: inline-block;
+    color: $white;
+    line-height: 3.125rem;
+    vertical-align: top;
+    font-size: 1.125rem;
+    padding: 0 0.5rem;
+  }
+
+  @media screen and (min-width: $media-m) {
+    & ::ng-deep .logo {
+      &__link {
+        display: inline-block;
+      }
+    }
+  }
+}

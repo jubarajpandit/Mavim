@@ -1,0 +1,118 @@
+<cdk-tree
+	class="topic-tree"
+	[dataSource]="this.nodes"
+	[treeControl]="treeControl"
+>
+	<cdk-tree-node
+		class="node"
+		*cdkTreeNodeDef="let node"
+		[style.padding-left]="getPadding(node)"
+	>
+		<div
+			class="node-content"
+			[ngClass]="{
+        'node-selected': node.isSelected,
+        'highlight-green': node.isCreated
+      }"
+			(click)="selectNode(node)"
+		>
+			<mav-topicicon
+				*ngIf="!node.customIconId"
+				[name]="node.icon"
+			></mav-topicicon>
+			<mav-topic-customicon
+				*ngIf="node.customIconId"
+				[CustomIconId]="node.customIconId"
+			></mav-topic-customicon>
+			{{ node.item }}
+			<mav-spin-loader
+				*ngIf="node.isLoading"
+				class="node-loader"
+			></mav-spin-loader>
+			<div class="feature-div" *featureFlag="features.createTopicFeature">
+				<div
+					*ngIf="options?.showCreate && !isAnyNodeLoading && canCreateTopic(node) && isAuthorized | async"
+					id="tree-create-button-{{ node.dcvId }}"
+					class="create-topic-icon hide"
+					(click)="handleToggleCreateMenu($event, node)"
+				></div>
+			</div>
+			<div class="feature-div" *featureFlag="features.moveTopicFeature">
+				<div
+					*ngIf="options?.showMove && !isAnyNodeLoading && isAuthorized | async"
+					id="tree-move-button-{{ node.dcvId }}"
+					class="move-topic-icon hide"
+					(click)="handleToggleMoveMenu($event, node)"
+				></div>
+			</div>
+		</div>
+	</cdk-tree-node>
+	<cdk-tree-node
+		class="node"
+		*cdkTreeNodeDef="let node; when: hasChild"
+		[style.padding-left]="getPadding(node)"
+	>
+		<div
+			[ngClass]="node.isExpanded ? 'folding node-expanded' : 'folding'"
+			(click)="toggleNode(node)"
+		></div>
+		<div
+			class="node-content"
+			[ngClass]="{
+        'node-selected': node.isSelected,
+        'highlight-green': node.isCreated
+      }"
+			(click)="selectNode(node)"
+		>
+			<mav-topicicon
+				*ngIf="!node.customIconId"
+				[name]="node.icon"
+			></mav-topicicon>
+			<mav-topic-customicon
+				*ngIf="node.customIconId"
+				[CustomIconId]="node.customIconId"
+			></mav-topic-customicon>
+			{{ node.item }}
+			<mav-spin-loader
+				*ngIf="node.isLoading"
+				class="node-loader"
+			></mav-spin-loader>
+			<div class="feature-div" *featureFlag="features.createTopicFeature">
+				<div
+					*ngIf="options?.showCreate && !isAnyNodeLoading && canCreateTopic(node) && isAuthorized | async"
+					id="tree-create-button-{{ node.dcvId }}"
+					class="create-topic-icon hide"
+					(click)="handleToggleCreateMenu($event, node)"
+				></div>
+			</div>
+			<div class="feature-div" *featureFlag="features.moveTopicFeature">
+				<div
+					*ngIf="options?.showMove && !isAnyNodeLoading && isAuthorized | async"
+					id="tree-move-button-{{ node.dcvId }}"
+					class="move-topic-icon hide"
+					(click)="handleToggleMoveMenu($event, node)"
+				></div>
+			</div>
+		</div>
+	</cdk-tree-node>
+</cdk-tree>
+
+<mav-menu-list
+	[ngClass]="isSelectedNode(menuTopic) ? 'move-menu-list selected' : 'move-menu-list'"
+	*ngIf="showMoveMenu"
+	(mouseleave)="hideMenu()"
+	[style.top.px]="getMenuYPosition(moveMenuHeight)"
+	[style.left.px]="menuPosition?.left + menuOffsetX"
+	[listItems]="moveMenuList"
+	(itemClicked)="handleMenuItemClicked($event)"
+></mav-menu-list>
+
+<mav-menu-list
+	[ngClass]="isSelectedNode(menuTopic) ? 'create-menu-list selected' : 'create-menu-list'"
+	*ngIf="showCreateMenu"
+	(mouseleave)="hideMenu()"
+	[style.top.px]="getMenuYPosition(createMenuHeight)"
+	[style.left.px]="menuPosition?.left + menuOffsetX"
+	[listItems]="createMenuList"
+	(itemClicked)="handleMenuItemClicked($event)"
+></mav-menu-list>

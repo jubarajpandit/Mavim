@@ -1,0 +1,57 @@
+{
+  "configKey": "Mavim:WopiSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-wopi-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-wopi-tenantid}#"
+    },
+    {
+      "key": "WopiHostApiEndPoint",
+      "value": "#{az-appConfig-wopi-hostendpoint}#"
+    },
+    {
+      "key": "AuthApiEndPoint",
+      "value": "#{az-appconfig-wopi-authapi-endpoint}#"
+    },
+    {
+      "key": "FileLockDbConnectionString",
+      "value": "#{az-appconfig-filelockdb-connectionstring}#"
+    },
+    {
+      "key": "DiscoveryUrl",
+      "value": "#{az-appconfig-wopi-discoveryurl}#"
+    },
+    {
+      "key": "ProofKeyInfoCacheExpirationInMinutes",
+      "value": "#{az-appconfig-proofkey-cache-expiration-in-minutes}#"
+    },
+    {
+      "key": "RequestUrlOrigin",
+      "value": "#{az-appconfig-wopi-requesturlorigin}#"
+    },
+    {
+      "key": "HostEditUrl",
+      "value": "#{az-appconfig-wopi-hostediturl}#"
+    },
+    {
+      "key": "SupportedWopiQueryParameterValues",
+      "value": "wopisrc={wopiSrc};IsLicensedUser=1"
+    },
+    {
+      "key": "KeyVaultName",
+      "value": "#{azKeyVaultName}#"
+    },
+    {
+      "key": "KeyVaultAppId",
+      "value": "#{az-keyvault-appid}#"
+    },
+    {
+      "key": "KeyVaultAppSecret",
+      "value": "#{az-keyvault-appsecret}#"
+    }
+  ]
+}

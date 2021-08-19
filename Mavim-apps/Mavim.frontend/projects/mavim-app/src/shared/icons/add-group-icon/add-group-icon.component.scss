@@ -1,0 +1,11 @@
+.add-group-image {
+	height: 1.25rem;
+	width: 1.5rem;
+	float: right;
+	margin-left: 0.4rem;
+	background-color: white;
+	-webkit-mask: url('../../../assets/icons/ui/streamline-icon-multiple-actions-add@140x140.svg')
+		no-repeat center / contain;
+	mask: url('../../../assets/icons/ui/streamline-icon-multiple-actions-add@140x140.svg')
+		no-repeat center / contain;
+}

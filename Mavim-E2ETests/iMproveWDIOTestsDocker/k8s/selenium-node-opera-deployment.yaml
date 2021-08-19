@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-node-opera
+  labels:
+    app: selenium-node-opera
+  namespace: #{aks-namespace}#
+spec:
+  replicas: #{SELENIUM_BROWSER_REPLICAS}#
+  selector:
+    matchLabels:
+      app: selenium-node-opera
+  template:
+    metadata:
+      labels:
+        app: selenium-node-opera
+    spec:
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+      containers:
+        - name: selenium-node-opera
+          image: selenium/node-opera:#{SELENIUM_BROWSER_VERSION}#
+          ports:
+            - containerPort: 5900
+          volumeMounts:
+            - mountPath: /dev/shm
+              name: dshm
+          env:
+            - name: HUB_HOST
+              value: "#{SELENIUM_HUB_URL}#"
+            - name: HUB_PORT
+              value: "#{SELENIUM_HUB_PORT}#"
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: ".5"

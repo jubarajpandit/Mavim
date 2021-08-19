@@ -1,0 +1,17 @@
+@import '../../styles/colors';
+
+.subtopics {
+  &-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.25rem;
+  }
+  &-name {
+    color: $blue;
+
+    &:hover {
+      cursor: pointer;
+      color: $dark-blue;
+    }
+  }
+}

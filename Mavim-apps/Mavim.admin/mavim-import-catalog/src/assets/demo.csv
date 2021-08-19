@@ -1,0 +1,2 @@
+Id,DisplayName,ConnectionString,Schema,TenantId,ApplicationTenantId,ApplicationId,ApplicationSecretKey
+291deb9b-049a-4ec3-891a-b51138e8ecca,DatabaseName,"Server=tcp:{database_servername}.database.windows.net,1433	Initial Catalog={databasename}	Persist Security Info=False	MultipleActiveResultSets=False	Encrypt=True	TrustServerCertificate=False	",ScemaName,49922901-3412-4b0c-afce-107bde0692bd,7e2cb31d-555a-4211-9076-d6e7ba6aee08,ec7fb3de-14ca-402a-b5b6-bb474d0e66d4,SecretPassword

@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21216.2</AssemblyVersion>
+    <FileVersion>1.0.21216.2</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mavim.Manager.Api.Topic.Business.Interfaces\Mavim.Manager.Api.Topic.Business.Interfaces.csproj" />
+  </ItemGroup>
+</Project>

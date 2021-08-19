@@ -1,0 +1,21 @@
+{
+  "configKey": "Mavim:DatabaseInfoSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-databaseinfo-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-databaseinfo-tenantid}#"
+    },
+    {
+      "key": "ConnectionString",
+      "value": "#{az-appconfig-databaseinfodb-connectionstring}#"
+    },
+    {
+      "key": "ApiEndPoint",
+      "value": "#{az-appconfig-databaseinfoapi-endpoint}#"
+    }
+  ]
+}

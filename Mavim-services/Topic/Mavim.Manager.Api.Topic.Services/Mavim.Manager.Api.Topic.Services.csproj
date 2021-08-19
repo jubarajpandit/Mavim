@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Mavim.Manager.Api.Topic.Services</AssemblyName>
+    <RootNamespace>Mavim.Manager.Api.Topic.Services</RootNamespace>
+    <AssemblyVersion>1.0.21216.2</AssemblyVersion>
+    <FileVersion>1.0.21216.2</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mavim.Manager.Api.Topic.Business.Interfaces\Mavim.Manager.Api.Topic.Business.Interfaces.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Topic.Business\Mavim.Manager.Api.Topic.Business.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Topic.Services.Interfaces\Mavim.Manager.Api.Topic.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.ExceptionHandler\Mavim.Libraries.Middlewares.ExceptionHandler.csproj" />
+  </ItemGroup>
+</Project>

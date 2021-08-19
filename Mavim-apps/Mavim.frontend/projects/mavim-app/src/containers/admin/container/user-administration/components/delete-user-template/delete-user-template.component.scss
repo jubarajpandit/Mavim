@@ -1,0 +1,17 @@
+.top-row {
+  margin-top: 2.5rem;
+}
+
+.user-actions-image {
+  margin-left: 10px;
+  margin-right: 10px;
+  float: left;
+  height: 1.25rem;
+  width: 1.25rem;
+
+  &.delete-icon {
+    background-color: #2078c6;
+    -webkit-mask: url('../../../../../../assets/icons/ui/streamline-icon-bin-1@140x140.svg') no-repeat center / contain;
+    mask: url('../../../../../../assets/icons/ui/streamline-icon-bin-1@140x140.svg') no-repeat center / contain;
+  }
+}

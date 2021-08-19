@@ -1,0 +1,53 @@
+.select-dropdown {
+	.dropdown-viewport {
+		width: inherit;
+		max-height: 15rem;
+	}
+
+	.dropdown-menu {
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		display: flex !important;
+		top: 2.375rem;
+	}
+
+	.pointer {
+		cursor: pointer;
+		margin-left: -0.1875rem !important;
+	}
+
+	.not-allowed {
+		cursor: not-allowed;
+	}
+
+	.arrow-down {
+		width: 1rem;
+		top: -1.75rem;
+		left: -0.0625rem;
+		position: relative;
+		font-weight: bold;
+
+		&:before {
+			content: '\203A';
+			position: absolute;
+			display: inline-block;
+			transform: rotate(90deg);
+			font-size: 2.5rem;
+		}
+	}
+
+	cdk-virtual-scroll-viewport {
+		contain: content;
+	}
+
+	::ng-deep {
+		span[class^='icon-'],
+		[class*=' icon-'] {
+			margin-right: 0;
+		}
+		.cdk-virtual-scroll-content-wrapper {
+			position: relative !important;
+		}
+	}
+}

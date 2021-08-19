@@ -1,0 +1,33 @@
+@import '../../styles/colors';
+@import '../../styles/metrics';
+
+::ng-deep .btn {
+  &.btn-primary {
+    background-color: $primary;
+    color: $white;
+    border: none;
+    outline: 0;
+    width: 50%;
+    display: inline-block;
+    align-self: right;
+
+    line-height: $default-btn-h;
+    border-radius: $default-radius;
+
+    font-size: $default-btn-fs;
+    font-family: $default-btn-ff;
+    font-weight: $default-btn-fw;
+    letter-spacing: 0.57px;
+
+    &:hover {
+      background-color: $primary-dark;
+      color: $white;
+    }
+
+    @media screen and (min-width: $media-m) {
+      float: none;
+      width: auto;
+      padding: 0 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21216.1</AssemblyVersion>
+    <FileVersion>1.0.21216.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Mavim.Manager.Model" Version="10.15.21186.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Mavim.Manager.Api.Utils\Mavim.Manager.Api.Utils.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.WopiHost.Repository.Interfaces\Mavim.Manager.Api.WopiHost.Repository.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Authorization\Mavim.Libraries.Authorization.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.Language\Mavim.Libraries.Middlewares.Language.csproj" />
+  </ItemGroup>
+</Project>

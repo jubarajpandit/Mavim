@@ -1,0 +1,17 @@
+{
+  "configKey": "Mavim:AdminImportAuthSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-admin-import-authorization-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-admin-import-authorization-tenantid}#"
+    },
+    {
+      "key": "ConnectionString",
+      "value": "#{az-appconfig-admin-import-authorizationdb-connectionstring}#"
+    }
+  ]
+}

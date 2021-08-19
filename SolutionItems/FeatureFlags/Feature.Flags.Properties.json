@@ -1,0 +1,61 @@
+{
+  "flags": [
+    {
+      "key": "WopiProofKeyValidation"
+    },
+    {
+      "key": "Changelog"
+    },
+    {
+      "key": "MoveTopicFeature"
+    },
+    {
+      "key": "CreateTopicFeature"
+    },
+    {
+      "key": "Hyperlink"
+    },
+    {
+      "key": "ExternalReferenceReCount"
+    },
+    {
+      "key": "ChartNavigation"
+    },
+    {
+      "key": "DeleteTopic"
+    },
+    {
+      "key": "ConnectRead"
+    },
+    {
+      "key": "ConnectWrite"
+    },
+    {
+      "key": "FieldOpenLocation"
+    },
+    {
+      "key": "AuthorizationRead"
+    },
+    {
+      "key": "TopicByCode"
+    },
+    {
+      "key": "Tooltip"
+    },
+    {
+      "key": "NoRelation"
+    },
+    {
+      "key": "WopiTest"
+    },
+    {
+      "key": "AdminGroupPage"
+    },
+    {
+      "key": "WopiApiEditNew"
+    },
+    {
+      "key": "TopicCustomIcon"
+    }
+  ]
+}

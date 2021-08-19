@@ -1,0 +1,24 @@
+<div class="field-edit-relation">
+	<h3 class="field-edit-relation__header">Change Field Relation</h3>
+	<div class="field-edit-relation__tree">
+		<mav-tree-container
+			[treeFacade]="treeFacade"
+			(topicSelected)="onTopicSelected($event)"
+		></mav-tree-container>
+	</div>
+
+	<div class="field-edit-relation__actions">
+		<mav-button
+			id="field-edit-relation-action-cancel-button"
+			[text]="cancelButtonText"
+			[cssClass]="closeButtonClass"
+			(click)="close()"
+		></mav-button>
+		<mav-button
+			id="field-edit-relation-action-save-button"
+			[text]="saveButtonText"
+			[cssClass]="saveButtonClass"
+			(click)="saveRelationField()"
+		></mav-button>
+	</div>
+</div>

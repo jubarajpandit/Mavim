@@ -1,0 +1,7 @@
+{
+  "apiPackage": "api",
+  "npmName": "@angular-mavim/managerservice",
+  "npmVersion": "6.4.1",
+  "snapshot": true,
+  "ngVersion": "7.1.2"
+}

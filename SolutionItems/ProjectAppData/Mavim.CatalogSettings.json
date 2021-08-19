@@ -1,0 +1,17 @@
+{
+  "configKey": "Mavim:CatalogSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-catalog-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-catalog-tenantid}#"
+    },
+    {
+      "key": "ApiEndPoint",
+      "value": "#{az-appconfig-catalogapi-endpoint}#"
+    }
+  ]
+}

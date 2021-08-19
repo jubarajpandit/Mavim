@@ -1,0 +1,173 @@
+version: "3.4"
+
+services:
+  topicapi:
+    image: topicapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5000:8080
+      - 5001:4430
+    expose:
+      - 8080
+      - 4430
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Topic/Mavim.Manager.Api.Topic/Dockerfile
+
+  mavimdatabaseinfoapi:
+    image: mavimdatabaseinfoapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5022:8080
+      - 5023:4430
+    expose:
+      - 8080
+      - 4430
+    build:
+      context: ../../
+      dockerfile: Mavim-services/MavimDatabaseInfo/Mavim.Manager.Api.MavimDatabaseInfo/Dockerfile
+
+  sqlserver:
+    container_name: sqlserver
+    image: "mcr.microsoft.com/mssql/server:2019-CU5-ubuntu-18.04"
+    ports:
+      - 14333:1433
+    environment: 
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "MavDev2020*"
+    volumes:
+      - /var/lib/docker/volumes/sqlvolume/_data:/var/opt/mssql
+
+  connectcacheserver:
+    container_name: connectcacheserver
+    image: connectcacheserver
+    command: redis-server --requirepass 123Rooster
+    ports:
+      - 6379:6379
+    build:
+      context: ../../
+      dockerfile: Mavim-services/DockerResources/ConnectCache/Dockerfile
+  
+  catalogapi:
+    image: catalogapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5002:8080
+      - 5003:4430
+    expose:
+      - 8080
+      - 4430
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Catalog/Mavim.Manager.Api.Catalog/Dockerfile
+
+  wopihost:
+    image: wopihost
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5004:8080
+      - 5005:4430
+    expose:
+      - 8080
+      - 4430
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Wopi/Mavim.Manager.Api.WopiHost/Dockerfile
+
+  authorization:
+    image: authorization
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5006:8080
+      - 5007:4430
+    expose:
+      - 8080
+      - 4430
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Authorization/Mavim.Manager.Api.Authorization/Dockerfile
+
+  adminimportcatalog:
+    image: adminimportcatalog
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5010:8080
+      - 5011:4430
+    expose:
+      - 8080
+      - 4430
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Admin/Mavim.Admin.Api.Import.Catalog/Dockerfile
+
+  featureflag:
+    image: featureflag
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5024:8080
+      - 5025:4430
+    expose:
+      - 8080
+      - 4430
+    build:
+      context: ../../
+      dockerfile: Mavim-services/FeatureFlag/Mavim.Manager.Api.FeatureFlag/Dockerfile
+
+  connectwrite:
+    image: connectwrite
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5026:8080
+      - 5027:4430
+    expose:
+      - 8080
+      - 4430
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Connect/Mavim.Manager.Api.Connect.Write/Dockerfile
+
+  connectread:
+    image: connectread
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5028:8080
+      - 5029:4430
+    expose:
+      - 8080
+      - 4430
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Connect/Mavim.Manager.Api.Connect.Read/Dockerfile
+
+  authorizationread:
+    image: connectread
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5031:8080
+      - 5032:4430
+    expose:
+      - 8080
+      - 4430
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Authorization/Mavim.Manager.Api.Authorization.Read/Dockerfile

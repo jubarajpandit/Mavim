@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  mavim.apitopic.linux.img:
+    image: ${DOCKER_REGISTRY-}mavimapitopic.linux.img
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5000:8080
+    expose:
+      - 8080
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Topic/Mavim.Manager.Api.Topic/Dockerfile

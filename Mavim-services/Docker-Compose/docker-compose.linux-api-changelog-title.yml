@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  mavim.apiachangelogtitle.linux.img:
+    image: ${DOCKER_REGISTRY-}mavimapichangelogtitle.linux.img
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5012:8080
+    expose:
+      - 8080
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Changelog/Title/Int/Mavim.Manager.Api.ChangelogTitle/Dockerfile

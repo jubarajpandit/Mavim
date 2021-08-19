@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": ["es2017", "DOM"],
+    "target": "es5",
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "experimentalDecorators" : true,
+    "noImplicitReturns": true,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "paths": {
+      "*": ["./*"]
+    },
+    "types": [
+      "node",
+      "@wdio/sync",
+      "@wdio/cucumber-framework",
+      "wdio-intercept-service"
+    ]
+  },
+  "include": ["./src/**/*.ts", "./Definitions/**/**.ts", "./config/**/**.ts", "./wdio.conf.ts"],
+  "compileOnSave": false
+}

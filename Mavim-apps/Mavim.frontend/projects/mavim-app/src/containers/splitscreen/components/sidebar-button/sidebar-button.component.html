@@ -1,0 +1,11 @@
+<div
+	*ngIf="getSidebarVisibility() | async"
+	class="sidebar"
+	(click)="handleBack()"
+>
+	<h3 class="sidebar-vertical-title">{{ titleEmitter$ | async }}</h3>
+	<mav-dot-loader
+		*ngIf="isLoading"
+		class="node-loader sidebar-vertical-title"
+	></mav-dot-loader>
+</div>

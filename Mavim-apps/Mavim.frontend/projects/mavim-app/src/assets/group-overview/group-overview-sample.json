@@ -1,0 +1,31 @@
+[
+	{
+		"id": "1",
+		"title": "Owner",
+		"description": "All owner have full adminstration rights.",
+		"roles": [
+			{
+				"name": "Full Control"
+			}
+		]
+	},
+	{
+		"id": "2",
+		"title": "Visitor",
+		"description": "Visitor don't have any roles.",
+		"roles": []
+	},
+	{
+		"id": "3",
+		"title": "Contributer",
+		"description": "All contributers can edit and view all the topics.",
+		"roles": [
+			{
+				"name": "Edit"
+			},
+			{
+				"name": "View"
+			}
+		]
+	}
+]

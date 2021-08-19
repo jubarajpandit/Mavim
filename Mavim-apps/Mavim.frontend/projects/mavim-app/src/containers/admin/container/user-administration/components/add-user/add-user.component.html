@@ -1,0 +1,119 @@
+<div class="container">
+	<div class="row top-row">
+		<div class="col-md-7">
+			<h1 class="header">Add users</h1>
+		</div>
+		<div class="col">
+			<mav-close-button (click)="close()"></mav-close-button>
+		</div>
+	</div>
+	<form [formGroup]="usersRole">
+		<div
+			*ngIf="globalMessage !== undefined"
+			class="alert alert-danger"
+			role="alert"
+		>
+			<div class="user-message-image invalid-email-icon"></div>
+			{{ globalMessage }}
+			<button
+				(click)="this.closeGlobalMessage()"
+				type="button"
+				class="btn close float-end"
+				data-dismiss="alert"
+				aria-label="Close"
+			>
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="row">
+			<div class="col-md-7">
+				<h3>E-mail address</h3>
+				<p>
+					Enter the e-mail address of the user you want to add. Use
+					[enter] to separate the e-mail addresses.
+				</p>
+				<div
+					*ngIf="this.emailMessage !== false"
+					class="alert alert-danger"
+					role="alert"
+				>
+					<div class="user-message-image invalid-email-icon"></div>
+					Please provide only valid email addresses.
+					<button
+						(click)="this.closeMessage()"
+						type="button"
+						class="btn close float-end"
+						data-dismiss="alert"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div (click)="this.focusInput()" class="col tabbox">
+					<div class="d-flex flex-wrap">
+						<div
+							*ngFor="let email of users"
+							[ngClass]="{
+                'valid-email': email.valid === true,
+                'invalid-email': email.valid === false
+              }"
+							class="m-1 px-2"
+						>
+							{{ email.name }}
+
+							<div
+								*ngIf="email.valid === true"
+								class="user-email-image valid-email-icon"
+							></div>
+							<div
+								*ngIf="email.valid !== true"
+								class="user-email-image invalid-email-icon"
+							></div>
+						</div>
+						<div
+							class="
+								p-1
+								col
+								bd-highlight
+								tabbox-height tabbox-flex
+							"
+						>
+							<input
+								#name
+								formControlName="email"
+								class="tabbox-element"
+								type="text"
+								(keydown.backspace)="this.removeUser()"
+								(keydown.enter)="this.addUserToList()"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<h3>User role</h3>
+				<p>Select the type of user role for this person</p>
+				<select formControlName="role" class="form-select">
+					<option
+						*ngFor="let role of roles"
+						[value]="role | lowercase"
+					>
+						{{ role }}
+					</option>
+				</select>
+			</div>
+		</div>
+	</form>
+	<div class="row mt-4">
+		<div class="col-md-3 offset-md-7">
+			<mav-add-user-button
+				id="addUserBtn"
+				[disabled]="!this.isFetchData && !this.validUsers"
+				(click)="addUsersWithRole()"
+				class="float-end"
+			>
+				{{ addUserButtonText }}
+			</mav-add-user-button>
+		</div>
+	</div>
+</div>

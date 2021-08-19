@@ -1,0 +1,119 @@
+<!-- Modal content-->
+<div class="modal-content">
+	<div class="modal-header header">
+		<h4 class="modal-title">{{ this.modalTitle }}</h4>
+	</div>
+	<form [formGroup]="topicForm">
+		<div class="modal-body">
+			<div
+				[ngClass]="{ 'has-warning': this.topicForm.valid && this.topicForm.dirty }"
+				class="mb-3 row"
+			>
+				<label
+					for="topicName"
+					class="form-label col-sm-2 col-form-label"
+					>Name <span class="required">*</span></label
+				>
+				<div class="col-sm-10">
+					<input
+						formControlName="title"
+						type="text"
+						class="form-control"
+						[ngClass]="{
+			'is-valid':
+				this.titleFormControl.touched && this.titleFormControl.valid && this.titleFormControl.disabled,
+			'is-invalid':
+				this.titleFormControl.touched && !this.titleFormControl.valid && !this.titleFormControl.disabled
+			}"
+						id="topicName"
+						placeholder="Topic name"
+					/>
+					<span
+						[hidden]="!this.titleFormControl.touched || this.titleFormControl.valid || this.titleFormControl.disabled"
+						class="invalid-feedback"
+						><i>{{ this.nameFormControlErrorMessage }}</i></span
+					>
+				</div>
+			</div>
+
+			<div
+				[ngClass]="{ 'has-warning': this.topicForm.valid && this.topicForm.dirty }"
+				class="mb-3 row"
+			>
+				<label
+					for="topicName"
+					class="form-label col-sm-2 col-form-label"
+					>Types <span class="required">*</span></label
+				>
+				<div class="col-sm-10">
+					<div
+						*ngIf="this.topicMetaFacade.getTypesLoaded | async; else typesLoading"
+					>
+						<mav-select-dropdown
+							formControlName="type"
+							[values]="this.topicMetaFacade.getTypes | async"
+							[placeholder]="this.typePlaceholder"
+						></mav-select-dropdown>
+					</div>
+
+					<ng-template #typesLoading>
+						<mav-spin-loader class="node-loader"></mav-spin-loader>
+					</ng-template>
+
+					<span
+						[hidden]="!this.typeFormControl.dirty || this.typeFormControl.valid"
+						class="invalid-feedback"
+						><i>Please select a type to proceed</i></span
+					>
+				</div>
+			</div>
+
+			<div
+				*ngIf="this.typeFormControl?.value"
+				[ngClass]="{ 'has-warning': this.topicForm.valid && this.topicForm.dirty }"
+				class="row"
+			>
+				<label for="topicName" class="col-sm-2 col-form-label"
+					>Icons <span class="required">*</span></label
+				>
+				<div class="col-sm-10">
+					<div
+						*ngIf="this.topicMetaFacade.getIconsLoaded | async; else iconsLoading"
+					>
+						<mav-select-dropdown
+							formControlName="icon"
+							[values]="this.mapIconsToDropDownModel(this.topicMetaFacade.getIcons | async)"
+							[selectedItem]="this.iconDisabledInput"
+							[placeholder]="this.iconPlaceholder"
+						></mav-select-dropdown>
+					</div>
+
+					<ng-template #iconsLoading>
+						<mav-spin-loader class="node-loader"></mav-spin-loader>
+					</ng-template>
+
+					<span
+						[hidden]="!this.iconFormControl.dirty || this.iconFormControl.valid || this.iconFormControl.disabled"
+						class="invalid-feedback"
+						><i>Please select an icon to proceed</i></span
+					>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<mav-button
+				type="submit"
+				[disabled]="!this.topicForm.valid"
+				[text]="'Ok'"
+				[cssClass]="'save'"
+				(click)="this.accept()"
+			></mav-button>
+			<mav-button
+				[text]="'Cancel'"
+				type="button"
+				[cssClass]="'cancel'"
+				(click)="this.cancel()"
+			></mav-button>
+		</div>
+	</form>
+</div>

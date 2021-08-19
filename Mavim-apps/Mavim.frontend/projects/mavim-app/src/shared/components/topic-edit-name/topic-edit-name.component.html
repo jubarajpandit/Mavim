@@ -1,0 +1,16 @@
+<div class="topic_edit_name">
+	<input
+		type="text"
+		class="title_text_control"
+		[formControl]="titleTextFormControl"
+	/>
+	<!-- Placeholder icon until the keendesign icons are implemented -->
+	<i class="mdl2 mdl2-pencil title_text_edit_icon"></i>
+
+	<div class="error" *ngIf="titleTextFormControl.errors?.minlength">
+		* Name must be at least {{ minLength }} characters long.
+	</div>
+	<div class="error" *ngIf="titleTextFormControl.errors?.maxlength">
+		* Name cannot exceed {{ maxLength }} characters.
+	</div>
+</div>

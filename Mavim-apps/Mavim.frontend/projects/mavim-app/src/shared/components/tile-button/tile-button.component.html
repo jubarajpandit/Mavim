@@ -1,0 +1,14 @@
+<ng-container *ngIf="toolTipFeatureFlag; else OldTemplate">
+	<div class="{{divClass}}" mavPopper [target]="tooltip">
+		<i class="{{iconClass}}"></i>
+		<div class="popper" #tooltip>
+			<span class="popper__arrow"></span>
+			{{text}}
+		</div>
+	</div>
+</ng-container>
+<ng-template #OldTemplate>
+	<div class="{{divClass}}">
+		<i class="{{iconClass}}"></i>
+	</div>
+</ng-template>

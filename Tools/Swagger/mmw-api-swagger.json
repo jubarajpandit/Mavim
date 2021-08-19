@@ -1,0 +1,476 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Mavim Manager Web API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/RalphNoordanus/mavim-manager-web-api/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "paths": {
+    "/{dbid}/element": {
+      "get": {
+        "summary": "Gets root element for a specific mavim database",
+        "operationId": "getRootElement",
+        "parameters": [
+          {
+            "name": "dbid",
+            "in": "path",
+            "description": "Mavim database id.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Element"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Mavim database supplied"
+          },
+          "401": {
+            "description": "Not authorized"
+          },
+          "404": {
+            "description": "Element not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/{dbid}/element/{dcvid}": {
+      "get": {
+        "summary": "Gets a child element with id 'dcvid' under a root element.",
+        "operationId": "getElement",
+        "parameters": [
+          {
+            "name": "dbid",
+            "in": "path",
+            "description": "Mavim database id.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dcvid",
+            "in": "path",
+            "description": "Mavim dcvid(databaseNumber - d, CodeNumber - c, versionNumber - v)",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Element"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Mavim database supplied"
+          },
+          "401": {
+            "description": "Not authorized"
+          },
+          "404": {
+            "description": "Element not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/{dbid}/element/{dcvid}/children": {
+      "get": {
+        "summary": "Gets all the children under the child element with id 'dcvid'",
+        "operationId": "getElementChildren",
+        "parameters": [
+          {
+            "name": "dbid",
+            "in": "path",
+            "description": "Mavim database id.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dcvid",
+            "in": "path",
+            "description": "Mavim dcvid(databaseNumber - d, CodeNumber - c, versionNumber - v)",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Element"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Mavim database supplied"
+          },
+          "401": {
+            "description": "Not authorized"
+          },
+          "404": {
+            "description": "Element not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/{dbid}/relation/{dcvid}": {
+      "get": {
+        "summary": "Get all relations of element with id 'dcvid'.",
+        "operationId": "GetRelationsByDcv",
+        "parameters": [
+          {
+            "name": "dbid",
+            "in": "path",
+            "description": "Mavim database id.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dcvid",
+            "in": "path",
+            "description": "Mavim dcvid(databaseNumber - d, CodeNumber - c, versionNumber - v)",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Mavim database supplied"
+          },
+          "401": {
+            "description": "Not authorized"
+          },
+          "404": {
+            "description": "Element not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/{dbid}/fields/{dcvid}": {
+      "get": {
+        "summary": "Gets fields of element with id 'dcvid' under a root element.",
+        "operationId": "GetFieldsByDcv",
+        "parameters": [
+          {
+            "name": "dbid",
+            "in": "path",
+            "description": "Mavim database id.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dcvid",
+            "in": "path",
+            "description": "Mavim dcvid(databaseNumber - d, CodeNumber - c, versionNumber - v)",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fieldset"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Mavim database supplied"
+          },
+          "401": {
+            "description": "Not authorized"
+          },
+          "404": {
+            "description": "Element not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/{dbid}/fields/{dcvid}/field/{fieldid}": {
+      "get": {
+        "summary": "Gets a child element with id 'dcvid' under a root element.",
+        "operationId": "getFieldsByDcvAndFieldsetId",
+        "parameters": [
+          {
+            "name": "dbid",
+            "in": "path",
+            "description": "Mavim database id.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dcvid",
+            "in": "path",
+            "description": "Mavim dcvid(databaseNumber - d, CodeNumber - c, versionNumber - v)",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fieldid",
+            "in": "path",
+            "description": "Field id",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fieldset"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Mavim database supplied"
+          },
+          "401": {
+            "description": "Not authorized"
+          },
+          "404": {
+            "description": "Element not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Element": {
+        "required": ["dcvid"],
+        "type": "object",
+        "properties": {
+          "dcvid": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "categorytype": {
+            "type": "string"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Element"
+            }
+          }
+        },
+        "example": {
+          "name": "Running some business",
+          "dcvid": "d1c1v1",
+          "categorytype": "topic",
+          "children": [
+            {
+              "name": "Plan",
+              "dcvid": "d1v2v1",
+              "categorytype": "topic"
+            },
+            {
+              "name": "Backup plan",
+              "dcvid": "d1c3v1",
+              "categorytype": "topic"
+            }
+          ]
+        }
+      },
+      "Fieldset": {
+        "required": ["id"],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "setname": {
+            "type": "string"
+          },
+          "fieldname": {
+            "type": "string"
+          },
+          "fieldvalue": {
+            "type": "string"
+          },
+          "fieldvaluetype": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": 1,
+          "setname": "The field set",
+          "fieldname": "My field",
+          "fieldvalue": "test",
+          "fieldvaluetype": "string"
+        }
+      },
+      "DispatchInstruction": {
+        "type": "object",
+        "properties": {
+          "dispatchTypeName": {
+            "type": "string"
+          },
+          "dispatchInstruction": {
+            "$ref": "#/components/schemas/Element"
+          }
+        },
+        "example": {
+          "dispatchTypeName": "Input",
+          "dispatchInstruction": {
+            "$ref": "#/components/schemas/Element/example"
+          }
+        }
+      },
+      "Relation": {
+        "required": ["dcvid"],
+        "type": "object",
+        "properties": {
+          "dcvid": {
+            "type": "string"
+          },
+          "dispatchInstructions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DispatchInstruction"
+            }
+          },
+          "userInstruction": {
+            "$ref": "#/components/schemas/Element"
+          },
+          "characteristic": {
+            "$ref": "#/components/schemas/Element"
+          },
+          "withElement": {
+            "$ref": "#/components/schemas/Element"
+          },
+          "withElementParent": {
+            "$ref": "#/components/schemas/Element"
+          }
+        },
+        "example": {
+          "dcvid": "d5926266c6237v0",
+          "dispatchInstructions": [
+            {
+              "$ref": "#/components/schemas/DispatchInstruction/example"
+            },
+            {
+              "$ref": "#/components/schemas/DispatchInstruction/example"
+            }
+          ],
+          "userInstruction": {
+            "$ref": "#/components/schemas/Element/example"
+          },
+          "characteristic": {
+            "$ref": "#/components/schemas/Element/example"
+          },
+          "withElement": {
+            "$ref": "#/components/schemas/Element/example"
+          },
+          "withElementParent": {
+            "$ref": "#/components/schemas/Element/example"
+          }
+        }
+      }
+    }
+  }
+}

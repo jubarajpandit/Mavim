@@ -1,0 +1,26 @@
+{
+  "/authorization/**": {
+    "target": "http://localhost:5006",
+    "pathRewrite": { "^/authorization": "" },
+    "secure": false,
+    "logLevel": "warn"
+  },
+  "/topic/**": {
+    "target": "http://localhost:5000",
+    "pathRewrite": { "^/topic": "" },
+    "secure": false,
+    "logLevel": "warn"
+  },
+  "/catalog/**": {
+    "target": "http://localhost:5002",
+    "pathRewrite": { "^/catalog": "" },
+    "secure": false,
+    "logLevel": "warn"
+  },
+  "/featureflag/**": {
+    "target": "http://localhost:5024",
+    "pathRewrite": { "^/featureflag": "" },
+    "secure": false,
+    "logLevel": "warn"
+  }
+}

@@ -1,0 +1,38 @@
+<div class="upload-btn-wrapper">
+  <H1 style="padding: 13px;">Upload import csv for users that like to edit</H1>
+  <div class="block">
+    <ng-container *ngIf="file === undefined; else elseBlock">
+      <button class="btn">Import a file</button>
+      <input
+        type="file"
+        name="myfile"
+        #fileImportInput
+        name="File Upload"
+        id="txtFileUpload"
+        (change)="fileChangeListener($event.target.files)"
+        accept=".csv"
+      />
+    </ng-container>
+    <ng-template #elseBlock>
+      <label>File name: {{ file?.name }}</label>
+      <button (click)="uploadUserObjectId()" class="btn-right">
+        <fa-icon [icon]="faUpload"></fa-icon>
+      </button>
+      <button (click)="removeInput()" class="btn-right">
+        <fa-icon [icon]="faEraser"></fa-icon>
+      </button>
+    </ng-template>
+  </div>
+  <table *ngIf="users" id="userObjectId">
+    <tr>
+      <th style="width: 45%;">User Object Ids</th>
+      <th style="width: 45%;">Tenant Ids</th>
+      <th style="width: auto;">Count: {{ users.length }}</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{ user.objectId }}</td>
+      <td colspan="2">{{ user.tenantId }}</td>
+    </tr>
+  </table>
+</div>
+<div [class.show]="error.show" id="snackbar">{{ error?.message }}</div>

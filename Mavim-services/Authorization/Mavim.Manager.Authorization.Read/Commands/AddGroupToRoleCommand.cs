@@ -1,0 +1,53 @@
+﻿using Mavim.Libraries.Middlewares.ExceptionHandler.Exceptions;
+using DbRole = Mavim.Manager.Authorization.Read.Databases.Models.Role;
+using Mavim.Manager.Authorization.Read.Constants;
+using Mavim.Manager.Authorization.Read.Databases;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Mavim.Manager.Authorization.Read.Commands
+{
+    public static class AddGroupToRoleCommand
+    {
+        // Command
+        public record Command(Guid Id, IReadOnlyList<Guid> Groups, Guid CompanyId, int AggregateId) : IRequest;
+
+        // Handler
+        public class Handler : BaseRoleCommand, IRequestHandler<Command, Unit>
+        {
+            public Handler(AuthorizationDatabaseContext dbContext) : base(dbContext)
+            { }
+
+            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            {
+                var (roleId, groupIds, companyId, aggregateId) = request ?? throw new ArgumentNullException(nameof(request));
+
+                DbRole role = await GetRole(roleId, companyId, cancellationToken);
+
+                ValidateAggregateId(aggregateId, role);
+
+                var dbRole = AddGroupsToRole(role, groupIds, aggregateId);
+
+                await SaveToDatabase(dbRole, cancellationToken);
+
+                return await Task.FromResult(Unit.Value);
+            }
+
+            private static DbRole AddGroupsToRole(DbRole role, IReadOnlyList<Guid> groupIds, int aggregateId)
+            {
+                var updatedGroups = role?.Groups is null ? groupIds?.ToArray() : role.Groups.Concat(groupIds).ToArray();
+                return role with
+                {
+                    Groups = updatedGroups,
+                    AggregateId = aggregateId,
+                    LastUpdated = DateTime.Now
+                };
+            }
+        }
+    }
+}

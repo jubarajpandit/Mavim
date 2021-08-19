@@ -1,0 +1,40 @@
+@import '../../styles/metrics';
+@import '../../styles/colors';
+
+.topic_edit_name {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: $base-ff;
+
+  & .title_text_control {
+    box-sizing: border-box;
+    width: 100%;
+    height: 5rem;
+    padding: 0 4rem 0.5rem 1rem;
+    font-size: 2.5rem;
+    border: 0.125rem solid $gray-400;
+  }
+
+  & .title_text_edit_icon {
+    position: absolute;
+    padding: 0.4rem 0.5rem;
+    top: 1.4rem;
+    right: 1.2rem;
+    background-color: $blue;
+    color: $white;
+    border-radius: 0.15rem;
+
+    &:before {
+      font-size: 1.1rem;
+    }
+  }
+
+  & .error {
+    font-size: $legenda-fs;
+    position: relative;
+    display: block;
+    padding-left: 1rem;
+    color: $error;
+  }
+}

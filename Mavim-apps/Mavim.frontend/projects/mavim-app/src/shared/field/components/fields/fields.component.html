@@ -1,0 +1,102 @@
+<table class="table fieldset" *ngFor="let fieldSet of fieldSets">
+	<thead>
+		<th class="col name">{{ fieldSet }}</th>
+	</thead>
+	<tbody>
+		<tr class="row">
+			<td class="col-12">
+				<table class="table field">
+					<tbody>
+						<tr
+							class="striped-row row"
+							*ngFor="let field of getFieldsOfFieldSet(fieldSet)"
+						>
+							<td class="col-4 fieldname">
+								<span>{{ field.fieldName }}</span>
+							</td>
+							<td class="fieldvalue col-8">
+								<table
+									class="table"
+									id="field_{{ field.topicDCV }}_{{ field.fieldSetId }}_{{ field.fieldId }}"
+								>
+									<tr
+										class="row"
+										*ngFor="let fieldValue of field.data"
+									>
+										<td
+											class="col-12"
+											[ngSwitch]="getFieldValueType(field.fieldValueType)"
+										>
+											<ng-container
+												*ngSwitchCase="fieldType.relationship"
+												[ngTemplateOutlet]="internalLinkTemplate"
+												[ngTemplateOutletContext]="{ field: field, fieldValue: fieldValue }"
+											></ng-container>
+											<ng-container
+												*ngSwitchCase="fieldType.multiRelationship"
+												[ngTemplateOutlet]="internalLinkTemplate"
+												[ngTemplateOutletContext]="{ field: field, fieldValue: fieldValue }"
+											></ng-container>
+											<ng-container
+												*ngSwitchCase="fieldType.relationshipList"
+												[ngTemplateOutlet]="internalLinkTemplate"
+												[ngTemplateOutletContext]="{ field: field, fieldValue: fieldValue }"
+											></ng-container>
+											<ng-container
+												*ngSwitchCase="fieldType.hyperlink"
+												[ngTemplateOutlet]="externalLinkTemplate"
+												[ngTemplateOutletContext]="{ field: field, fieldValue: fieldValue }"
+											></ng-container>
+											<ng-container
+												*ngSwitchCase="fieldType.multiHyperlink"
+												[ngTemplateOutlet]="externalLinkTemplate"
+												[ngTemplateOutletContext]="{ field: field, fieldValue: fieldValue }"
+											></ng-container>
+											<ng-container
+												*ngSwitchDefault
+												[ngTemplateOutlet]="viewTemplate"
+												[ngTemplateOutletContext]="{ field: field, fieldValue: fieldValue }"
+											></ng-container>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<ng-template
+	#externalLinkTemplate
+	let-field="field"
+	let-fieldValue="fieldValue"
+>
+	<span *ngIf="fieldValue" class="hyperlink">
+		<a class="link" [href]="fieldValue" target="_blank"
+			>{{ renderCellValueContent(fieldValue, field.fieldValueType) }}
+		</a>
+		<div class="external-link-icon"></div>
+	</span>
+</ng-template>
+
+<ng-template
+	#internalLinkTemplate
+	let-field="field"
+	let-fieldValue="fieldValue"
+>
+	<span
+		*ngIf="fieldValue"
+		class="link"
+		(click)="emitInternalLinkEvent(getDcvIdFromFieldValue(fieldValue))"
+		>{{ renderCellValueContent(fieldValue, field.fieldValueType) }}</span
+	>
+</ng-template>
+
+<ng-template #viewTemplate let-field="field" let-fieldValue="fieldValue">
+	<span *ngIf="fieldValue" class="multiline"
+		>{{ renderCellValueContent(fieldValue, field.fieldValueType) }}</span
+	>
+</ng-template>

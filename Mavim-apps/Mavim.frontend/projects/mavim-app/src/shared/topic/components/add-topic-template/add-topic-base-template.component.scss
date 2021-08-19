@@ -1,0 +1,28 @@
+@import '../../../styles/colors';
+
+.modal-content {
+  .header {
+    background-color: $blue;
+    color: $white;
+  }
+
+  .required {
+    color: $blue;
+  }
+
+  .invalid-feedback {
+    display: block;
+  }
+
+  ::ng-deep {
+    .node-loader .loader {
+      margin: 0;
+      margin-left: 2rem;
+      margin-top: 0.5rem;
+      position: absolute;
+      display: inline-block;
+      height: 2rem;
+      width: 2rem;
+    }
+  }
+}

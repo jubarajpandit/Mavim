@@ -1,0 +1,10 @@
+<div
+	(click)="this.destroyForm(false)"
+	[hidden]="!this.componentRef"
+	class="modal-overlay"
+></div>
+<div [hidden]="!this.componentRef" class="modal" role="dialog">
+	<div class="modal-dialog">
+		<ng-template #formTemplate></ng-template>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+<ng-container>
+	<mav-tree-cdk
+		*ngIf="isTreeFetched | async"
+		id="mav-tree-cdk"
+		[nodes]="this.treeFacade.selectNodes | async"
+		[options]="options"
+		(nodeExpanded)="handleNodeExpanded($event)"
+		(nodeCollapsed)="handleNodeCollapsed($event)"
+		(topicSelected)="onTopicSelected($event)"
+		(addTopic)="this.openAddTopicModal($event)"
+		(addChildTopic)="this.openAddChildTopicModal($event)"
+		(deleteTopic)="this.openDeleteTopicModal($event)"
+		(moveToTop)="handleMoveToTop($event)"
+		(moveToBottom)="handleMoveToBottom($event)"
+		(moveUp)="handleMoveUp($event)"
+		(moveDown)="handleMoveDown($event)"
+		(moveLevelUp)="handleMoveLevelUp($event)"
+		(moveLevelDown)="handleMoveLevelDown($event)"
+	></mav-tree-cdk>
+
+	<mav-spin-loader
+		*ngIf="isTreeLoading | async"
+		class="node-loader"
+	></mav-spin-loader>
+
+	<mav-resource-not-found
+		*ngIf="isTreeFailed | async"
+		[mainText]="notFoundMainText"
+		[subText]="notFoundSubText"
+	></mav-resource-not-found>
+</ng-container>

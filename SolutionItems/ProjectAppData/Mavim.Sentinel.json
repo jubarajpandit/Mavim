@@ -1,0 +1,9 @@
+{
+  "configKey": "Mavim",
+  "kvPairs": [
+    {
+      "key": "Sentinel",
+      "value": "#{az-appconfig-sentinel}#"
+    }
+  ]
+}

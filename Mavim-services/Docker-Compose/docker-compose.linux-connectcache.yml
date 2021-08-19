@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  mavim.connectcache.linux.img:
+    image: ${DOCKER_REGISTRY-}mavimconnectcache.linux.img
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - 6379:6379
+    expose:
+      - 6379
+    build:
+      context: ../../
+      dockerfile: Mavim-services/DockerResources/ConnectCache/Dockerfile

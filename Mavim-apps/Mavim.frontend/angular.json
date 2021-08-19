@@ -1,0 +1,177 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "mavim-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/mavim-app",
+      "sourceRoot": "projects/mavim-app/src",
+      "prefix": "mav",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/mavim-app",
+            "index": "projects/mavim-app/src/index.html",
+            "main": "projects/mavim-app/src/main.ts",
+            "polyfills": "projects/mavim-app/src/polyfills.ts",
+            "tsConfig": "projects/mavim-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "allowedCommonJsDependencies": [
+              "minimatch"
+            ],
+            "assets": [
+              "projects/mavim-app/src/favicon.ico",
+              "projects/mavim-app/src/assets"
+            ],
+            "styles": [
+              "projects/mavim-app/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "allowedCommonJsDependencies": [
+                "minimatch"
+              ],
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "2mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/mavim-app/src/environments/environment.ts",
+                  "with": "projects/mavim-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "local": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "allowedCommonJsDependencies": [
+                "minimatch"
+              ],
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/mavim-app/src/environments/environment.ts",
+                  "with": "projects/mavim-app/src/environments/environment.local.ts"
+                }
+              ]
+            },
+            "localtoazure": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "allowedCommonJsDependencies": [
+                "minimatch"
+              ],
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/mavim-app/src/environments/environment.ts",
+                  "with": "projects/mavim-app/src/environments/environment.localtoazure.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "ssl": true,
+            "browserTarget": "mavim-app:build",
+            "headers": {
+              "Content-Security-Policy": "trusted-types angular; frame-ancestors 'self' https://login.microsoftonline.com/common; object-src 'none';",
+              "X-Content-Type-Options": "nosniff",
+              "Referrer-Policy": "no-referrer"
+            }
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mavim-app:build:production"
+            },
+            "local": {
+              "browserTarget": "mavim-app:build:local"
+            },
+            "localtoazure": {
+              "browserTarget": "mavim-app:build:localtoazure"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mavim-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "main": "projects/mavim-app/src/test.ts",
+            "polyfills": "projects/mavim-app/src/polyfills.ts",
+            "tsConfig": "projects/mavim-app/tsconfig.spec.json",
+            "assets": [
+              "projects/mavim-app/src/favicon.ico",
+              "projects/mavim-app/src/assets"
+            ],
+            "styles": [
+              "projects/mavim-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/mavim-app/**/*.ts",
+              "projects/mavim-app/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "mavim-app",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
+}

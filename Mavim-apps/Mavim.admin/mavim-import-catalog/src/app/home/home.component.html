@@ -1,0 +1,50 @@
+<div class="upload-btn-wrapper">
+  <H1 style="padding: 13px;">Upload import csv for adding database</H1>
+  <div class="block">
+    <ng-container *ngIf="file === undefined; else elseBlock">
+      <button class="btn">Import a file</button>
+      <input
+        type="file"
+        name="myfile"
+        #fileImportInput
+        name="File Upload"
+        id="txtFileUpload"
+        (change)="fileChangeListener($event.target.files)"
+        accept=".csv"
+      />
+    </ng-container>
+    <ng-template #elseBlock>
+      <label>File name: {{ file?.name }}</label>
+      <button (click)="uploadUserObjectId()" class="btn-right">
+        <fa-icon [icon]="faUpload"></fa-icon>
+      </button>
+      <button (click)="removeInput()" class="btn-right">
+        <fa-icon [icon]="faEraser"></fa-icon>
+      </button>
+    </ng-template>
+  </div>
+  <table *ngIf="customers" id="userObjectId">
+    <tr>
+      <th style="width: auto;">DisplayName</th>
+      <th style="width: auto;">ConnectionString</th>
+      <th style="width: auto;">Schema</th>
+      <th style="width: auto;">TenantId</th>
+      <th style="width: auto;">ApplicationTenantId</th>
+      <th style="width: auto;">ApplicationId</th>
+      <th style="width: auto;">ApplicationSecretKey</th>
+      <th style="width: auto;">IsInternalDatabase</th>
+      <th style="width: auto;">Count: {{ customers.length }}</th>
+    </tr>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.displayName }}</td>
+      <td>{{ customer.connectionString }}</td>
+      <td>{{ customer.schema }}</td>
+      <td>{{ customer.tenantId }}</td>
+      <td>{{ customer.applicationTenantId }}</td>
+      <td>{{ customer.applicationId }}</td>
+      <td>{{ customer.applicationSecretKey }}</td>
+      <td colspan="2">{{ customer.isInternalDatabase }}</td>
+    </tr>
+  </table>
+</div>
+<div [class.show]="error.show" id="snackbar">{{ error?.message }}</div>

@@ -1,0 +1,58 @@
+<!-- page header -->
+<header class="bg-primary fixed-top o365" (blur)="barBlur()">
+	<div class="container-fluid o365__bar">
+		<!-- Mobile nav menu -->
+		<mav-o365-button [type]="'menu'"></mav-o365-button>
+		<!-- logo -->
+		<mav-o365-logo [title]="navbarTitle"></mav-o365-logo>
+		<!-- Mobile dot menu -->
+		<mav-o365-button
+			[type]="'dots'"
+			(click)="toggleO365Menu()"
+		></mav-o365-button>
+		<!-- Mobile dot dropdown -->
+		<mav-dropdown class="o365__dd" [ngClass]="{ active: expandedO365Menu }">
+			<!-- settings -->
+			<mav-o365-button
+				[type]="'settings'"
+				(click)="toggleSettings()"
+			></mav-o365-button>
+			<mav-menu-list
+				*ngIf="settingsDropdown"
+				[listItems]="menuListItems"
+				(itemClicked)="handleMenuItemClicked($event)"
+			></mav-menu-list>
+			<!-- about -->
+			<mav-o365-button
+				[type]="'help'"
+				(click)="closeO365Menu()"
+				title="{{ version }}"
+			></mav-o365-button>
+			<!-- close btn -->
+			<mav-o365-button
+				[type]="'close'"
+				(click)="closeO365Menu()"
+			></mav-o365-button>
+		</mav-dropdown>
+
+		<!-- bio / account button-->
+		<mav-o365-account-button
+			[userName]="userName"
+			(click)="toggleAccountO365Menu()"
+		></mav-o365-account-button>
+		<mav-dropdown *ngIf="accountDropDown">
+			<li>
+				<a
+					[href]="userAccountUrl"
+					target="_blank"
+					class="dropdown-item"
+				>
+					{{ myAccount }}
+				</a>
+			</li>
+			<li class="logout-link">
+				<a (click)="logout()" class="dropdown-item"> {{ logOut }} </a>
+			</li>
+		</mav-dropdown>
+	</div>
+</header>

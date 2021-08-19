@@ -1,0 +1,141 @@
+@import '../../../../shared/styles/colors';
+@import '../../../../shared/styles/metrics';
+@import '../../../../shared/styles/load-wave';
+
+@mixin detail-loader($height, $background, $wave) {
+  margin-top: 1rem;
+  display: block;
+  width: auto;
+  text-align: center;
+  background-color: $background;
+  background-repeat: none;
+  background-image: linear-gradient(90deg, transparent, transparent, transparent, transparent, $wave, transparent);
+  border: 1px solid $accent1;
+}
+
+@mixin notification-button($bg-c, $bg-c-hover, $f-c, $f-c-hover) {
+  font-family: $base-ff;
+  width: 8rem;
+  color: $f-c;
+  background-color: $bg-c;
+  margin: 0.5rem 1rem;
+  border-radius: 0.125rem;
+  border: 1px solid transparent;
+
+  &:hover {
+    color: $f-c-hover;
+    background-color: $bg-c-hover;
+  }
+}
+
+// remove after implementation
+@mixin placholder-edit-box {
+  margin-top: 1rem;
+  display: block;
+  width: auto;
+  background-color: $white;
+
+  border: 1px solid $accent1;
+  padding: 1rem;
+
+  pre {
+    color: $black;
+    line-height: 1.25;
+  }
+}
+
+.edit-panel {
+  background-color: $edit-bg;
+  width: 100%;
+  position: relative;
+  padding: 4rem 0;
+  height: 100%;
+  overflow-y: auto;
+
+  h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  }
+
+  h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  }
+
+  &__page {
+    background-color: $white;
+    min-height: 20rem;
+    width: calc(100% - 8rem);
+    max-width: 60rem;
+    margin: 0 auto;
+    box-shadow: 0 0 20px 0 $black-shadow;
+    padding: 2rem 1rem;
+  }
+
+  &__form {
+    transition: 0.5s height ease;
+    position: absolute;
+    padding: 0 1rem;
+    background-color: $new;
+    width: 100%;
+    text-align: center;
+    font-family: $base-ff;
+    top: 0;
+    left: 0;
+    box-shadow: 0 3px 3px 0 $black-shadow;
+    line-height: $default-bar-h;
+    height: $default-bar-h;
+
+    &--info {
+      color: $white;
+    }
+
+    &--actions {
+      display: inline-block;
+      position: absolute;
+      text-align: right;
+      right: 4rem;
+      top: 0;
+
+      .btn {
+        &.btn-save {
+          @include notification-button($accent1, $accent1-hover, $white, $white);
+        }
+
+        &.btn-cancel {
+          @include notification-button($new-light, $light-blue, $accent1-hover, $accent1-hover);
+        }
+      }
+    }
+  }
+
+  &__content {
+    padding: 1.875rem 1.875rem 3.375rem;
+
+    section {
+      padding: 0;
+      display: block;
+    }
+  }
+
+  // remove after implementation
+  &__cp-placeholder {
+    @include placholder-edit-box;
+  }
+
+  &__content-loader {
+    padding: 1.875rem 1.875rem 3.375rem;
+    @include detail-loader(2.5rem, $gray-300, rgba(255, 255, 255, 0.75));
+    @include load-wave(5s);
+  }
+}

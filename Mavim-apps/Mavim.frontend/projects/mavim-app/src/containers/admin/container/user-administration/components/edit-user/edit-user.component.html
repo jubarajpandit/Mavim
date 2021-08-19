@@ -1,0 +1,47 @@
+<div class="container">
+	<div class="row top-row">
+		<div class="col">
+			<h1 class="header">Edit user</h1>
+		</div>
+		<div class="col">
+			<mav-close-button (click)="close()"></mav-close-button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10">
+			<form *ngIf="usersRole" [formGroup]="usersRole">
+				<div class="mb-3">
+					<label class="form-label">Email address</label>
+					<input
+						formControlName="email"
+						type="email"
+						class="form-control"
+					/>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">User role</label>
+					<select formControlName="role" class="form-select">
+						<option
+							*ngFor="let role of roles"
+							[value]="role | lowercase"
+						>
+							{{ role }}
+						</option>
+					</select>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 offset-md-6">
+			<mav-edit-user-button
+				id="updateUserBtn"
+				[disabled]="!this.isRoleChanged"
+				(click)="editUser()"
+				class="float-end"
+			>
+				Update user
+			</mav-edit-user-button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+{
+  "configKey": "Mavim:ChangelogTitlePublicSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-cltitlepublic-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-cltitlepublic-tenantid}#"
+    },
+    {
+      "key": "AuthApiEndPoint",
+      "value": "#{az-appconfig-cltitlepublic-authapi-endpoint}#"
+    },
+    {
+      "key": "InternalApiEndPoint",
+      "value": "#{az-appconfig-cltitlepublic-endpoint}#"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+@import '../../../../shared/styles/colors';
+
+.max-height {
+	max-height: calc(100vh - 7rem);
+}
+.col-dividing-line {
+	border-right: 0.125rem solid $blue;
+	padding-bottom: 100%;
+	margin-bottom: -100%;
+}

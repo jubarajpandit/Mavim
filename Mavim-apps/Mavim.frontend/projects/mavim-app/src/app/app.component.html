@@ -1,0 +1,14 @@
+<mav-modalfactory></mav-modalfactory>
+<div [ngClass]="{ 'main-view': !isFullscreen }">
+	<mav-o365navbar *ngIf="!isFullscreen"></mav-o365navbar>
+	<div *ngIf="!isFullscreen" class="main-view__notifications">
+		<mav-notification
+			[notifications$]="notification$"
+			(action)="closeNotification()"
+		>
+		</mav-notification>
+	</div>
+	<div [ngClass]="{ 'main-view__view-panel': !isFullscreen }">
+		<router-outlet></router-outlet>
+	</div>
+</div>

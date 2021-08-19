@@ -1,0 +1,29 @@
+{
+  "configKey": "Mavim:TopicSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-topic-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-topic-tenantid}#"
+    },
+    {
+      "key": "AuthApiEndPoint",
+      "value": "#{az-appconfig-topic-authapi-endpoint}#"
+    },
+    {
+      "key": "KeyVaultName",
+      "value": "#{azKeyVaultName}#"
+    },
+    {
+      "key": "KeyVaultAppId",
+      "value": "#{az-keyvault-appid}#"
+    },
+    {
+      "key": "KeyVaultAppSecret",
+      "value": "#{az-keyvault-appsecret}#"
+    }
+  ]
+}

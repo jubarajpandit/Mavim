@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+  mavim.apiconnectread.linux.img:
+    image: ${DOCKER_REGISTRY-}mavimapiconnectread.linux.img
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    user: serviceuser
+    ports:
+      - 5028:8080
+    expose:
+      - 8080
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Connect/Mavim.Manager.Api.Connect.Read/Dockerfile

@@ -1,0 +1,45 @@
+<div id="relation-create" class="relation-create">
+	<div class="row mb-3">
+		<label for="inputRelationshipType" class="col-sm-4 col-form-label"
+			>Relationship type</label
+		>
+		<div class="col-sm-8">
+			<select
+				id="relation-create_category_select"
+				class="form-select"
+				(change)="onRelationshipTypeChanged($event.target.value)"
+			>
+				<option value="-">-Please select a category-</option>
+				<option
+					*ngFor="let item of relationCategoriesItem"
+					[value]="item.ID"
+				>
+					{{ item.Name }}
+				</option>
+			</select>
+		</div>
+	</div>
+
+	<div *ngIf="selectedRelationship" class="relation-create--tree">
+		<mav-tree-container
+			[treeFacade]="treeFacade"
+			(topicSelected)="onTopicSelected($event)"
+		></mav-tree-container>
+	</div>
+
+	<div class="relation-create--actions">
+		<mav-button
+			id="relation-create_close_button"
+			[text]="cancelButtonText"
+			[cssClass]="closeButtonClass"
+			(click)="cancel()"
+		></mav-button>
+		<mav-button
+			*ngIf="selectedRelationship"
+			id="relation-create_save_button"
+			[text]="saveButtonText"
+			cssClass="save show"
+			(click)="saveRelation()"
+		></mav-button>
+	</div>
+</div>

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-node-#{BROWSER}#
+  labels:
+    app: selenium-node-#{BROWSER}#
+  namespace: #{aks-namespace}#
+spec:
+  replicas: #{SELENIUM_BROWSER_REPLICAS}#
+  selector:
+    matchLabels:
+      app: selenium-node-#{BROWSER}#
+  template:
+    metadata:
+      labels:
+        app: selenium-node-#{BROWSER}#
+    spec:
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+      containers:
+        - name: selenium-node-#{BROWSER}#
+          image: selenium/node-#{BROWSER}#:#{SELENIUM_BROWSER_VERSION}#
+          ports:
+            - containerPort: 5900
+          volumeMounts:
+            - mountPath: /dev/shm
+              name: dshm
+          env:
+            - name: HUB_HOST
+              value: "#{SELENIUM_HUB_URL}#"
+            - name: HUB_PORT
+              value: "#{SELENIUM_HUB_PORT}#"
+          resources:
+            limits:
+              memory: "1000Mi"
+              cpu: ".5"

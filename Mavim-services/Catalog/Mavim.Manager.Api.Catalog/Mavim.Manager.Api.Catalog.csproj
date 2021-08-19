@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>7602d5d4-4f81-43e9-967f-611aef953611</UserSecretsId>
+    <StartupObject>Mavim.Manager.Api.Catalog.Program</StartupObject>
+    <AssemblyVersion>1.0.21216.1</AssemblyVersion>
+    <FileVersion>1.0.21216.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.4.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.17.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.Kubernetes" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.6" />
+    <PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="4.4.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.2.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\SolutionItems\SharedAppSettings\appsettings.AzureDev.json" Link="appsettings.AzureDev.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\SolutionItems\SharedAppSettings\appsettings.Development.json" Link="appsettings.Development.json" />
+    <Content Include="..\..\..\SolutionItems\SharedAppSettings\appsettings.Test.json" Link="appsettings.Test.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\SolutionItems\SharedAppSettings\appsettings.Demo.json" Link="appsettings.Demo.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\SolutionItems\SharedAppSettings\appsettings.Acc.json" Link="appsettings.Acc.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\SolutionItems\SharedAppSettings\appsettings.Production.json" Link="appsettings.Production.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Authorization\Mavim.Libraries.Authorization.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.ExceptionHandler\Mavim.Libraries.Middlewares.ExceptionHandler.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Manager.Api.Utils\Mavim.Manager.Api.Utils.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Catalog.Services.Interfaces\Mavim.Manager.Api.Catalog.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Catalog.Services\Mavim.Manager.Api.Catalog.Services.csproj" />
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="$(ConfigurationName) == Debug">
+    <Copy SourceFiles="..\..\..\SolutionItems\SharedAppSettings\appsettings.Development.json" DestinationFiles=".\appsettings.Development.json" />
+  </Target>
+</Project>

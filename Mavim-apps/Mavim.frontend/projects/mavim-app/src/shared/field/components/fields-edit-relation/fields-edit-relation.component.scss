@@ -1,0 +1,68 @@
+@import '../../../styles/colors';
+@import '../../../styles/metrics';
+
+@mixin notification-button($bg-c, $bg-c-hover, $f-c, $f-c-hover) {
+	font-family: $base-ff;
+	width: 8rem;
+	float: right;
+	color: $f-c;
+	background-color: $bg-c;
+	border-radius: 0.125rem;
+	border: 1px solid transparent;
+
+	&:hover {
+		color: $f-c-hover;
+		background-color: $bg-c-hover;
+	}
+}
+
+::ng-deep .field-edit-relation {
+	.show {
+		display: block;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	&__tree {
+		border: 1px solid $gray-shadow;
+		border-radius: 2px;
+		overflow-y: scroll;
+		max-height: 50vh;
+	}
+
+	&__header {
+		margin-top: 0;
+	}
+
+	&__actions {
+		display: block;
+		position: relative;
+		width: 20rem;
+		float: right;
+		margin-top: 2rem;
+
+		.btn {
+			&.save {
+				margin-right: 1rem;
+				@include notification-button(
+					$accent1,
+					$accent1-hover,
+					$white,
+					$white
+				);
+			}
+
+			&.cancel {
+				margin-left: 1rem;
+				@include notification-button(
+					$light-blue,
+					$red,
+					$dark-blue,
+					$white
+				);
+			}
+		}
+	}
+}

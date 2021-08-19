@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21216.1</AssemblyVersion>
+    <FileVersion>1.0.21216.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="v1\Enum\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mavim.Manager.Authorization.DbModel\Mavim.Manager.Authorization.DbModel.csproj" />
+  </ItemGroup>
+</Project>

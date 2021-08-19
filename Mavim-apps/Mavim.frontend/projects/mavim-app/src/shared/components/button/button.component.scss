@@ -1,0 +1,49 @@
+@import '../../styles/colors';
+@import '../../styles/metrics';
+
+@mixin notification-button($bg-c, $bg-c-hover, $f-c, $f-c-hover) {
+	font-family: $base-ff;
+	width: 8rem;
+	float: right;
+	color: $f-c;
+	background-color: $bg-c;
+	border-radius: 0.125rem;
+	border: 1px solid transparent;
+
+	&:hover {
+		color: $f-c-hover;
+		background-color: $bg-c-hover;
+	}
+}
+
+.btn {
+	background-color: $white;
+	color: $primary;
+	border: none;
+	outline: 0;
+	align-self: right;
+	font-size: 1.125rem;
+	line-height: 2.75rem;
+
+	&:hover {
+		color: $primary-dark;
+		background-color: $light-grey;
+		cursor: pointer;
+	}
+
+	&.save {
+		margin-right: 1rem;
+		@include notification-button($accent1, $accent1-hover, $white, $white);
+	}
+
+	&.cancel {
+		margin-left: 1rem;
+		@include notification-button($light-blue, $red, $dark-blue, $white);
+	}
+
+	@media screen and (min-width: $media-m) {
+		float: none;
+		width: auto;
+		padding: 0 1rem;
+	}
+}

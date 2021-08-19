@@ -1,0 +1,27 @@
+@import '../styles/colors';
+
+/* width */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(200, 200, 200, 0.2);
+  padding: 0.125rem;
+  margin: 0.25rem;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $gray-400;
+  margin: 0.25rem;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $gray-400;
+  box-shadow: 1px 1px 3px 0 $gray-600;
+}

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21216.1</AssemblyVersion>
+    <FileVersion>1.0.21216.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.11.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Features\Mavim.Libraries.Features.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.ExceptionHandler\Mavim.Libraries.Middlewares.ExceptionHandler.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.WopiValidator\Mavim.Libraries.Middlewares.WopiValidator.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.WopiHost.Services.Interfaces\Mavim.Manager.Api.WopiHost.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.Language\Mavim.Libraries.Middlewares.Language.csproj" />
+  </ItemGroup>
+</Project>

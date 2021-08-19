@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  mavim.apiadminimportcatalog.linux.img:
+    image: ${DOCKER_REGISTRY-}mavimapiadminimportcatl.linux.img
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - 5008:8080
+    expose:
+      - 8080
+    build:
+      context: ../../
+      dockerfile: Mavim-services/Admin/Mavim.Admin.Api.Import.Catalog/Dockerfile

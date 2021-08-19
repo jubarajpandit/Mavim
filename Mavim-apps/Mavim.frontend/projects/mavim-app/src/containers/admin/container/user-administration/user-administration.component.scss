@@ -1,0 +1,99 @@
+@import '../../../../shared/styles/colors';
+
+.top-row {
+	margin-top: 2.5rem;
+}
+
+.spinner-size {
+	width: 4rem;
+	height: 4rem;
+}
+
+.col-dividing-line {
+	border-right: 0.125rem solid $blue;
+	padding-bottom: 100%;
+	margin-bottom: -100%;
+}
+
+.header {
+	padding-bottom: 0.3125rem;
+}
+
+table {
+	width: 100%;
+}
+
+cdk-virtual-scroll-viewport {
+	height: 400px;
+}
+
+.table-header {
+	margin: 0rem;
+	font-family: 'Source Sans Pro';
+}
+
+th {
+	background-color: $blue;
+	color: white;
+	border: 0rem;
+	padding: 0.3rem;
+	vertical-align: top;
+}
+
+td {
+	padding: 0.75rem;
+	vertical-align: top;
+}
+
+.flex-height {
+	height: 2.25rem;
+}
+
+.user-actions-image {
+	margin-left: 10px;
+	margin-right: 10px;
+	float: left;
+	height: 1.25rem;
+	width: 1.25rem;
+
+	&.edit-icon {
+		background-color: #2078c6;
+		-webkit-mask: url('../../../../assets/icons/ui/streamline-icon-pencil@140x140.svg')
+			no-repeat center / contain;
+		mask: url('../../../../assets/icons/ui/streamline-icon-pencil@140x140.svg')
+			no-repeat center / contain;
+	}
+
+	&.delete-icon {
+		background-color: #2078c6;
+		-webkit-mask: url('../../../../assets/icons/ui/streamline-icon-bin-1@140x140.svg')
+			no-repeat center / contain;
+		mask: url('../../../../assets/icons/ui/streamline-icon-bin-1@140x140.svg')
+			no-repeat center / contain;
+	}
+}
+
+.user-message-image {
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 1.25rem;
+	width: 1.25rem;
+	float: left;
+	margin-top: 0.125rem;
+
+	&.ok-message-icon {
+		background-color: #2ab535;
+		-webkit-mask: url('../../../../assets/icons/ui/streamline-icon-check-circle-1@140x140.svg')
+			no-repeat center / contain;
+		mask: url('../../../../assets/icons/ui/streamline-icon-check-circle-1@140x140.svg')
+			no-repeat center / contain;
+	}
+
+	&.not-ok-message-icon {
+		background-color: #d03333;
+		-webkit-mask: url('../../../../assets/icons/ui/streamline-icon-remove-circle@140x140.svg')
+			no-repeat center / contain;
+		mask: url('../../../../assets/icons/ui/streamline-icon-remove-circle@140x140.svg')
+			no-repeat center / contain;
+	}
+}

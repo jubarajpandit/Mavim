@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wdio
+  labels:
+    name: wdio
+  namespace: mavim-testing
+spec:
+  containers:
+  - name: wdio
+    image: #{AZACRFQDN}#/mavimwdioe2e.linux.img:#{buildnumber}#
+    args: ["#{USER_NAME}#", "#{USER_PASS}#", "#{SELENIUM_HUB_URL}#", "#{BASE_URL}#", "#{INSTANCES}#"]
+    resources:
+      limits:
+        memory: "1Gi"
+        cpu: "500m"
+    ports:
+      - containerPort: 4444

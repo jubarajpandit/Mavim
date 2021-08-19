@@ -1,0 +1,13 @@
+{
+  "configKey": "Mavim:FeatureFlagSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-featureflag-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-featureflag-tenantid}#"
+    }
+  ]
+}

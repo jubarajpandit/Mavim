@@ -1,0 +1,66 @@
+@import '../../../styles/colors';
+
+.table {
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  & th,
+  td {
+    padding: 0;
+    border: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    & span {
+      margin-left: 1rem;
+    }
+
+    & td {
+      border-left: 1px solid #ddd;
+      border-top: 1px solid #ddd;
+    }
+  }
+
+  & .striped-row:nth-child(even) {
+    background-color: #f5f5f5;
+  }
+
+  & .striped-row:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  &.relations {
+    color: #fff;
+    font-size: 1.125rem;
+    background-color: #505155;
+    font-weight: 600;
+    line-height: 2.875rem;
+    box-shadow: 0 1px 2px 0 $gray-shadow;
+  }
+
+  &.relation {
+    font-weight: 100;
+    color: #333;
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  & .name {
+    padding-left: 0.5rem;
+  }
+
+  & .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  & .internal-link {
+    color: $blue;
+    cursor: pointer;
+
+    &:hover {
+      color: $dark-blue;
+    }
+  }
+}

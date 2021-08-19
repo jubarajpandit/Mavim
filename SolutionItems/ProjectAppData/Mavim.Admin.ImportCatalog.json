@@ -1,0 +1,29 @@
+{
+  "configKey": "Mavim:AdminImportCatalogSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-admin-import-catalog-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-admin-import-catalog-tenantid}#"
+    },
+    {
+      "key": "ConnectionString",
+      "value": "#{az-appconfig-admin-import-catalog-connectionstring}#"
+    },
+    {
+      "key": "KeyVaultName",
+      "value": "#{azKeyVaultName}#"
+    },
+    {
+      "key": "KeyVaultAppId",
+      "value": "#{az-keyvault-appid}#"
+    },
+    {
+      "key": "KeyVaultAppSecret",
+      "value": "#{az-keyvault-appsecret}#"
+    }
+  ]
+}

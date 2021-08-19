@@ -1,0 +1,14 @@
+version: "3.4"
+
+services:
+  mavim.manager.api.clogrelation:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4430;http://+:8080
+      - ASPNETCORE_HTTPS_PORT=44397
+    ports:
+      - "44397:8080"
+      - "44397:4430"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro

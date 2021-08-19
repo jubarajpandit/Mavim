@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21187.1</AssemblyVersion>
+    <FileVersion>1.0.21187.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.6" />
+    <PackageReference Include="Mavim.Manager.Model" Version="10.15.21186.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Shared\Mavim.Libraries.Middlewares.ExceptionHandler\Mavim.Libraries.Middlewares.ExceptionHandler.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Int.ChLog.Relationship.Repository.Interfaces\Mavim.Manager.Api.Int.ChLog.Relationship.Repository.Interfaces.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.ChLog.Relationship.DbContext\Mavim.Manager.ChLog.Relationship.DbContext.csproj" />
+  </ItemGroup>
+</Project>

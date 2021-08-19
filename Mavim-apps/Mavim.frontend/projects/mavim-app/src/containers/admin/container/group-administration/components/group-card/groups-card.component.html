@@ -1,0 +1,36 @@
+<div class="card me-3 mb-3 border border-2">
+	<div class="card-header rounded-0">
+		<b> {{title}} </b>
+	</div>
+	<div class="card-body">
+		<ul class="list-group list-group-flush itemBox">
+			<li class="list-group-item">{{description}}</li>
+			<table class="list-group mt-1">
+				<tr>
+					<td>
+						<div class="me-2">
+							<b>Roles</b>
+						</div>
+					</td>
+					<td>
+						<ng-container *ngFor="let role of roles;" class="group">
+							<button
+								type="button"
+								class="
+									btn btn-primary
+									me-1
+									btn-sm
+									rounded-3
+									mt-1
+									button-padding
+								"
+							>
+								{{role.name}}
+							</button>
+						</ng-container>
+					</td>
+				</tr>
+			</table>
+		</ul>
+	</div>
+</div>

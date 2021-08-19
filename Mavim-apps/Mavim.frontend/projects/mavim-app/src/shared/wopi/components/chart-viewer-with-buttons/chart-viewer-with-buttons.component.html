@@ -1,0 +1,16 @@
+<div>
+	<button
+		[ngClass]="chartDcv === chart.dcv ? 'btn btn-light active' : 'btn btn-light'"
+		*ngFor="let chart of topicCharts?.charts"
+		(click)="openChart(chart.dcv)"
+	>
+		{{ chart.name }}
+	</button>
+
+	<mav-chart-viewer
+		[dcvId]="chartDcv"
+		[wopiActionUrl]="visioActionUrl"
+		(shapeClick)="shapeClick.emit($event)"
+	>
+	</mav-chart-viewer>
+</div>

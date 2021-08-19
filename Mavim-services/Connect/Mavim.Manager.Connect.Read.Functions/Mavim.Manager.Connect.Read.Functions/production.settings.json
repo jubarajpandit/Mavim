@@ -1,0 +1,35 @@
+{
+  "configKey": "Mavim:ConnectReadFunctions",
+  "kvPairs": [
+    {
+      "key": "ASBConnectionStringConnect",
+      "value": "#{ASBConnectionStringConnect}#",
+      "slotSetting": false
+    },
+    {
+      "key": "ConnectReadClientApplicationSecret",
+      "value": "#{ConnectReadClientApplicationSecret}#",
+      "slotSetting": false
+    },
+    {
+      "key": "ConnectReadClientApplicationId",
+      "value": "#{ConnectReadClientApplicationId}#",
+      "slotSetting": false
+    },
+    {
+      "key": "ConnectReadClientScope",
+      "value": "#{ConnectReadClientScope}#",
+      "slotSetting": false
+    },
+    {
+      "key": "ConnectReadClientBaseUrl",
+      "value": "#{ConnectReadClientBaseUrl}#",
+      "slotSetting": false
+    },
+    {
+      "key": "AZURE_TENANT_ID",
+      "value": "#{azure_tenant_id}#",
+      "slotSetting": false
+    }
+  ]
+}

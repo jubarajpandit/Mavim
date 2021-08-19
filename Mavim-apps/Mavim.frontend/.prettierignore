@@ -1,0 +1,12 @@
+package.json
+package-lock.json
+tsconfig.json
+tslint.json
+angular.json
+auth.config.ts
+bootstrap.css
+bootstrap-responsive.css
+site.css
+*.spec.json
+*.yaml
+*.yml

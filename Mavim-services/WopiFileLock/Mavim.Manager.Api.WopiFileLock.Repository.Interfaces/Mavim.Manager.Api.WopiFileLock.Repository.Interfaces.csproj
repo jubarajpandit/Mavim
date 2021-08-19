@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Mavim.Manager.Api.WopiFileLock.Repository.Interfaces</RootNamespace>
+    <AssemblyVersion>1.0.20275.2</AssemblyVersion>
+    <FileVersion>1.0.20275.2</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mavim.Manager.WopiFileLock.Model\Mavim.Manager.WopiFileLock.Model.csproj" />
+  </ItemGroup>
+</Project>

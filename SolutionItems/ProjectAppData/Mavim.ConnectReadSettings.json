@@ -1,0 +1,33 @@
+{
+  "configKey": "Mavim:ConnectReadSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-connectread-applicationid}#"
+    },
+    {
+      "key": "ApplicationIdInternal",
+      "value": "#{az-appConfig-connectread-applicationidinternal}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-connectread-tenantid}#"
+    },
+    {
+      "key": "RedisConnectionString",
+      "value": "#{az-appConfig-connectread-redis-connectionstring}#"
+    },
+    {
+      "key": "ConnectConnectionString",
+      "value": "#{az-appconfig-connectread-connectionstring}#"
+    },
+    {
+      "key": "KeyVaultName",
+      "value": "#{az-appconfig-connectread-keyvault-name}#"
+    },
+    {
+      "key": "keyVaultAppSecret",
+      "value": "#{az-appconfig-connectread-keyvault-secret}#"
+    }
+  ]
+}

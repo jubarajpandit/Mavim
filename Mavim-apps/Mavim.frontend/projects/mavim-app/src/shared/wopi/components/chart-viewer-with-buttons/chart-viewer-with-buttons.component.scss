@@ -1,0 +1,18 @@
+.btn-light {
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  background-color: #2078c6;
+  border-color: #2078c6;
+
+  &:hover {
+    background-color: #00539b;
+    border-color: #00539b;
+  }
+
+  &.active {
+    background-color: #00539b !important;
+    border-color: #00539b !important;
+    color: white !important;
+  }
+}

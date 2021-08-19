@@ -1,0 +1,13 @@
+<div *ngIf="dcvId">
+	<form
+		#wopi_form
+		name="wopi_form"
+		[target]="dcvId"
+		[action]="safeUrl"
+		method="post"
+		novalidate
+	>
+		<input name="access_token" [value]="authToken" type="hidden" />
+	</form>
+	<div #frameholder class="frameholder"></div>
+</div>

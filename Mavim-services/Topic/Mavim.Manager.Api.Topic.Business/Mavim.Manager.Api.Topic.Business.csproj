@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21216.2</AssemblyVersion>
+    <FileVersion>1.0.21216.2</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Features\Mavim.Libraries.Features.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.ExceptionHandler\Mavim.Libraries.Middlewares.ExceptionHandler.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Topic.Repository.Interfaces\Mavim.Manager.Api.Topic.Repository.Interfaces.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Topic.Repository\Mavim.Manager.Api.Topic.Repository.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Topic.Business.Interfaces\Mavim.Manager.Api.Topic.Business.Interfaces.csproj" />
+  </ItemGroup>
+</Project>

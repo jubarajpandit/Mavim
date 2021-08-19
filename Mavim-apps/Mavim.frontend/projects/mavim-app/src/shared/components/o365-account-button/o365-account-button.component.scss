@@ -1,0 +1,72 @@
+@import '../../styles/colors';
+@import '../../styles/metrics';
+
+.o365__bio {
+  display: inline-block;
+  background-color: $primary;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 3.125rem;
+  z-index: 1;
+
+  &:hover {
+    background-color: $primary-dark;
+    cursor: pointer;
+  }
+
+  img {
+    margin: 0 0.3125rem;
+  }
+
+  &.show {
+    .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  &-name {
+    display: none;
+  }
+
+  .rounded-img {
+    width: 2.375rem;
+    height: 2.375rem;
+    display: inline-block;
+    border-radius: 50%;
+    background-size: 2.375rem;
+    background: url('../../../assets/images/person_placeholder.png') 0 0 no-repeat $light-grey;
+    overflow: hidden;
+    margin: 0.375rem;
+
+    img {
+      margin: 0;
+      width: 2.375rem;
+
+      &[src='null'] {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (min-width: $media-m) {
+    &-name {
+      position: relative;
+      line-height: 3.125rem;
+      vertical-align: top;
+      display: inline-block;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      white-space: nowrap;
+      text-align: right;
+      overflow: hidden;
+      max-width: 126px;
+      width: 126px;
+      font-size: $legenda-fs;
+      color: $white !important;
+      font-weight: 400;
+      font-family: $base-ff;
+    }
+  }
+}

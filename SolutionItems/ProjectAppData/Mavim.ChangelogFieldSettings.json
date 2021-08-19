@@ -1,0 +1,25 @@
+{
+  "configKey": "Mavim:ChangelogFieldSettings",
+  "kvPairs": [
+    {
+      "key": "ApplicationId",
+      "value": "#{az-appConfig-changelogfield-applicationid}#"
+    },
+    {
+      "key": "TenantId",
+      "value": "#{az-appConfig-changelogfield-tenantid}#"
+    },
+    {
+      "key": "ConnectionString",
+      "value": "#{az-appconfig-changelogfielddb-connectionstring}#"
+    },
+    {
+      "key": "ApiEndPoint",
+      "value": "#{az-appconfig-changelogfieldapi-endpoint}#"
+    },
+    {
+      "key": "AuthApiEndPoint",
+      "value": "az-appconfig-changelogfieldapi-authapi-endpoint"
+    }
+  ]
+}

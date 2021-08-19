@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.21216.2</AssemblyVersion>
+    <FileVersion>1.0.21216.2</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Mavim.Manager.Model" Version="10.15.21189.1" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Authorization\Mavim.Libraries.Authorization.csproj" />
+    <ProjectReference Include="..\..\Shared\Mavim.Libraries.Middlewares.Language\Mavim.Libraries.Middlewares.Language.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Topic.Business.Interfaces\Mavim.Manager.Api.Topic.Business.Interfaces.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Topic.Services.Interfaces\Mavim.Manager.Api.Topic.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\Mavim.Manager.Api.Topic.Services\Mavim.Manager.Api.Topic.Services.csproj" />
+  </ItemGroup>
+</Project>

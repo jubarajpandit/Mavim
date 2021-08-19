@@ -1,0 +1,61 @@
+<mav-top-bar (toggle)="toggleTreePanelVisibility()"></mav-top-bar>
+<mav-tree-panel
+	[treePanelVisibility]="treePanelVisible"
+	(topicSelected)="handleTopicSelected($event)"
+	(closeTree)="toggleTreePanelVisibility()"
+></mav-tree-panel>
+<div class="split-screens">
+	<div
+		class="split-screens__screen screen-1"
+		[ngClass]="{
+      rightscreen: screenState === ScreenStateEnum.RightScreenMaximized,
+      leftscreen:
+        screenState === ScreenStateEnum.LeftScreenMaximized &&
+        !treePanelVisible &&
+        (sidebarVisibleWithoutTree | async) !== true,
+      'screen-2': treePanelVisible && screenState !== ScreenStateEnum.SplitScreen,
+      sidebar_offset: (sidebarVisibleWithoutTree | async) && screenState === ScreenStateEnum.SplitScreen,
+      sidebar_offset__fullscreen:
+        (sidebarVisibleWithoutTree | async) && screenState === ScreenStateEnum.LeftScreenMaximized
+    }"
+	>
+		<div class="split-screens__screen-content">
+			<div>
+				<mav-tile-button
+					*ngIf="!isHomePage"
+					(click)="resize(ScreenStateEnum.LeftScreenMaximized)"
+					[toolTipFeatureFlag]="this.tooltipFeatureFlag"
+					[divClass]="'split-screens__screen-size-btn'"
+					[iconClass]="'mdl2 mdl2-full-screen'"
+					[text]="screenState !== ScreenStateEnum.LeftScreenMaximized?'Maximize':'Minimize'"
+				>
+				</mav-tile-button>
+			</div>
+			<router-outlet name="left"></router-outlet>
+		</div>
+	</div>
+	<div
+		class="split-screens__screen screen-2"
+		[ngClass]="{
+      sidebar_offset__fullscreen:
+        (sidebarVisibleWithoutTree | async) && screenState === ScreenStateEnum.RightScreenMaximized,
+      rightscreen: screenState === ScreenStateEnum.RightScreenMaximized,
+      leftscreen: screenState === ScreenStateEnum.LeftScreenMaximized
+    }"
+	>
+		<div class="split-screens__screen-content">
+			<div>
+				<mav-tile-button
+					*ngIf="!isHomePage"
+					(click)="resize(ScreenStateEnum.RightScreenMaximized)"
+					[toolTipFeatureFlag]="this.tooltipFeatureFlag"
+					[divClass]="'split-screens__screen-size-btn'"
+					[iconClass]="'mdl2 mdl2-full-screen'"
+					[text]="screenState !== ScreenStateEnum.RightScreenMaximized ? 'Maximize' : 'Minimize'"
+				>
+				</mav-tile-button>
+			</div>
+			<router-outlet *ngIf="!singleOutlet" name="right"></router-outlet>
+		</div>
+	</div>
+</div>

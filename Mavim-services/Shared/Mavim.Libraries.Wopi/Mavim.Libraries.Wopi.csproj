@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyVersion>1.0.20275.2</AssemblyVersion>
+    <FileVersion>1.0.20275.2</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mavim.Libraries.Authorization\Mavim.Libraries.Authorization.csproj" />
+    <ProjectReference Include="..\Mavim.Libraries.Middlewares.Language\Mavim.Libraries.Middlewares.Language.csproj" />
+  </ItemGroup>
+</Project>
